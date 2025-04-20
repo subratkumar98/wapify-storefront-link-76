@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 
 const steps = [
   {
