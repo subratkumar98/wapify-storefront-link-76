@@ -1,6 +1,6 @@
 
-import React, { useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { VideoButton } from './VideoModal';
 
 export const HeroSection: React.FC = () => {
@@ -9,12 +9,25 @@ export const HeroSection: React.FC = () => {
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
-          <div className="space-y-6 opacity-0 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Turn Your WhatsApp into a Profitable Online Store in 2 Minutes.
+          <div className="space-y-8 opacity-0 animate-fade-in">
+            <div className="flex items-center gap-2 text-whatsapp font-medium animate-fade-in-right">
+              <Sparkles className="h-5 w-5" />
+              <span className="text-sm md:text-base">The Easiest Way to Sell Online</span>
+            </div>
+            
+            <h1 className="relative">
+              <span className="block text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-whatsapp to-whatsapp-dark bg-clip-text text-transparent animate-fade-in transition-all duration-300 hover:scale-[1.02]">
+                Transform Your WhatsApp
+              </span>
+              <span className="block mt-2 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in delay-100">
+                Into a <span className="bg-whatsapp text-white px-2 py-1 rounded-lg inline-block transform hover:scale-105 transition-all duration-300">Money-Making</span> Store
+              </span>
+              <span className="block mt-2 text-2xl md:text-3xl text-gray-600 font-medium animate-fade-in delay-200">
+                Set up in just 2 minutes
+              </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600">
+            <p className="text-xl md:text-2xl text-gray-600 animate-fade-in delay-300">
               No Website. No Coding. Just One Link to Sell More.
             </p>
             
