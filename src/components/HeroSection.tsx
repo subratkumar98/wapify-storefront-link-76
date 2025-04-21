@@ -10,28 +10,32 @@ export const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="space-y-8 opacity-0 animate-fade-in">
-            <div className="flex items-center gap-2 text-whatsapp font-medium animate-fade-in-right">
-              <Sparkles className="h-5 w-5" />
-              <span className="text-sm md:text-base">The Easiest Way to Sell Online</span>
+            <div className="flex items-center gap-2 text-whatsapp font-semibold text-base md:text-lg animate-fade-in-right">
+              <Sparkles className="h-6 w-6" />
+              <span>The Easiest Way to Sell Online</span>
             </div>
             
-            <h1 className="relative">
-              <span className="block text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-whatsapp to-whatsapp-dark bg-clip-text text-transparent animate-fade-in transition-all duration-300 hover:scale-[1.02]">
+            <h1 className="relative leading-tight">
+              <span className="block text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-whatsapp to-whatsapp-dark bg-clip-text text-transparent animate-fade-in hover:scale-[1.03] transition-all duration-300">
                 Transform Your WhatsApp
               </span>
-              <span className="block mt-2 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in delay-100">
-                Into a <span className="bg-whatsapp text-white px-2 py-1 rounded-lg inline-block transform hover:scale-105 transition-all duration-300">Money-Making</span> Store
+              <span className="block mt-3 text-4xl md:text-5xl lg:text-6xl font-extrabold animate-fade-in delay-100">
+                Into a <span className="bg-whatsapp text-white px-3 py-1 rounded-lg inline-block transform hover:scale-110 transition-transform duration-300">Money-Making</span> Store
               </span>
-              <span className="block mt-2 text-2xl md:text-3xl text-gray-600 font-medium animate-fade-in delay-200">
+              <span className="block mt-4 text-2xl md:text-3xl text-gray-700 font-semibold tracking-wide animate-fade-in delay-200">
                 Set up in just 2 minutes
               </span>
             </h1>
+
+            <p className="mt-6 text-xl md:text-2xl text-gray-700 font-medium max-w-xl animate-fade-in delay-300">
+              Turn your WhatsApp into a profitable online store in <span className="font-bold text-whatsapp">2 minutes</span> with a simple, no-code solution.
+            </p>
             
-            <p className="text-xl md:text-2xl text-gray-600 animate-fade-in delay-300">
+            <p className="text-xl md:text-2xl text-gray-600 max-w-lg animate-fade-in delay-400">
               No Website. No Coding. Just One Link to Sell More.
             </p>
             
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-6">
               <a 
                 href="#early-access" 
                 className="cta-button inline-flex items-center justify-center"
