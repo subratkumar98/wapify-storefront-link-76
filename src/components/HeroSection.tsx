@@ -17,18 +17,18 @@ export const HeroSection: React.FC = () => {
             
             <h1 className="relative leading-tight">
               <span className="block text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-whatsapp to-whatsapp-dark bg-clip-text text-transparent animate-fade-in hover:scale-[1.03] transition-all duration-300">
-                Transform Your WhatsApp
+                Turn Your WhatsApp
               </span>
               <span className="block mt-3 text-4xl md:text-5xl lg:text-6xl font-extrabold animate-fade-in delay-100">
-                Into a <span className="bg-whatsapp text-white px-3 py-1 rounded-lg inline-block transform hover:scale-110 transition-transform duration-300">Money-Making</span> Store
+                Into a <span className="bg-whatsapp text-white px-3 py-1 rounded-lg inline-block transform hover:scale-110 transition-transform duration-300">Profitable</span> Store
               </span>
               <span className="block mt-4 text-2xl md:text-3xl text-gray-700 font-semibold tracking-wide animate-fade-in delay-200">
-                Set up in just 2 minutes
+                In Just 2 Minutes
               </span>
             </h1>
 
             <p className="mt-6 text-xl md:text-2xl text-gray-700 font-medium max-w-xl animate-fade-in delay-300">
-              Turn your WhatsApp into a profitable online store in <span className="font-bold text-whatsapp">2 minutes</span> with a simple, no-code solution.
+              Transform your WhatsApp into a powerful online selling platform with <span className="font-bold text-whatsapp">zero technical skills</span> required.
             </p>
             
             <p className="text-xl md:text-2xl text-gray-600 max-w-lg animate-fade-in delay-400">
