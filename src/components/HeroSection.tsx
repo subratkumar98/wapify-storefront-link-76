@@ -16,17 +16,17 @@ export const HeroSection: React.FC = () => {
             </div>
             
             <h1 className="relative leading-tight">
-              <span className="block text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-whatsapp to-whatsapp-dark bg-clip-text text-transparent animate-fade-in hover:scale-[1.03] transition-all duration-300">
-                Turn Your WhatsApp
+              <span className="block text-4xl md:text-5xl lg:text-6xl font-extrabold text-black animate-fade-in">
+                Turn your WhatsApp into
               </span>
               <span className="block mt-3 text-4xl md:text-5xl lg:text-6xl font-extrabold animate-fade-in delay-100">
-                Into a <span className="bg-whatsapp text-white px-3 py-1 rounded-lg inline-block transform hover:scale-110 transition-transform duration-300">Profitable</span> Store
+                a <span className="bg-whatsapp text-white px-3 py-1 rounded-lg inline-block transform hover:scale-110 transition-transform duration-300">profitable online store</span>
               </span>
-              <span className="block mt-4 text-2xl md:text-3xl text-gray-700 font-semibold tracking-wide animate-fade-in delay-200">
-                In Just 2 Minutes
+              <span className="block mt-3 text-4xl md:text-5xl lg:text-6xl font-extrabold text-black animate-fade-in delay-200">
+                in just 2 minutes
               </span>
             </h1>
-
+            
             <p className="text-xl md:text-2xl text-gray-600 max-w-lg animate-fade-in delay-400">
               No Website. No Coding. Just One Link to Sell More.
             </p>
