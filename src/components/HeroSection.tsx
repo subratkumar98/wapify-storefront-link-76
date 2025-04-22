@@ -20,7 +20,9 @@ export const HeroSection: React.FC = () => {
                 Turn your WhatsApp into
               </span>
               <span className="block mt-3 text-4xl md:text-5xl lg:text-6xl font-extrabold animate-fade-in delay-100">
-                a <span className="bg-whatsapp text-white px-3 py-1 rounded-lg inline-block transform hover:scale-110 transition-transform duration-300">profitable online store</span>
+                a <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#25D366] to-[#128C7E] inline-block hover:scale-105 transition-transform duration-300">
+                  profitable online store
+                </span>
               </span>
               <span className="block mt-3 text-4xl md:text-5xl lg:text-6xl font-extrabold text-black animate-fade-in delay-200">
                 in just 2 minutes
