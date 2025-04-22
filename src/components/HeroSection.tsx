@@ -27,10 +27,6 @@ export const HeroSection: React.FC = () => {
               </span>
             </h1>
 
-            <p className="mt-6 text-xl md:text-2xl text-gray-700 font-medium max-w-xl animate-fade-in delay-300">
-              Transform your WhatsApp into a powerful online selling platform with <span className="font-bold text-whatsapp">zero technical skills</span> required.
-            </p>
-            
             <p className="text-xl md:text-2xl text-gray-600 max-w-lg animate-fade-in delay-400">
               No Website. No Coding. Just One Link to Sell More.
             </p>
