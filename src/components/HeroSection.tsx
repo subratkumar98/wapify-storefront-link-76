@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { VideoButton } from './VideoModal';
@@ -16,15 +15,12 @@ export const HeroSection: React.FC = () => {
             </div>
             
             <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-              <span className="inline text-black animate-fade-in">
-                Turn your WhatsApp into a{' '}
-              </span>
-              <span className="inline bg-clip-text text-transparent bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:scale-105 transition-transform duration-300 relative">
-                profitable online store
-                <span className="absolute left-0 right-0 bottom-[-0.25rem] h-[3px] bg-gradient-to-r from-[#25D366] to-[#128C7E] opacity-70"></span>
-              </span>
-              <span className="inline text-black animate-fade-in delay-200">
-                {' '}in just 2 minutes
+              <span className="text-black animate-fade-in">
+                Transform Your WhatsApp into a{' '}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#25D366] to-[#128C7E]">
+                  Profitable Online Store
+                </span>{' '}
+                in Just 2 Minutes
               </span>
             </h1>
             
