@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { VideoButton } from './VideoModal';
@@ -49,8 +48,8 @@ export const HeroSection: React.FC = () => {
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-whatsapp/10 animate-pulse"></div>
                 
                 <img 
-                  src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9" 
-                  alt="Professional WhatsApp business selling products online" 
+                  src="/lovable-uploads/15adcc99-ac4f-41d4-9f28-46381d2d0617.png" 
+                  alt="Business owner managing WhatsApp orders" 
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-xl shadow-2xl"
                 />
                 
@@ -70,4 +69,3 @@ export const HeroSection: React.FC = () => {
 };
 
 export default HeroSection;
-
