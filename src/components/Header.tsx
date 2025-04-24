@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
         <div className="container-custom flex flex-col md:flex-row items-center justify-center md:justify-between text-sm">
           <div className="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">
             <CountdownTimer />
-            <span className="hidden md:inline animate-fade-in">Only 24 hours left</span>
+            <span className="inline animate-fade-in">Only 24 hours left</span>
           </div>
           <div className="flex items-center space-x-2 mt-1 md:mt-0 hover:scale-105 transition-transform duration-300">
             <AnimatedCounter end={468} duration={2000} suffix=" businesses joined already" />
@@ -43,13 +43,13 @@ export const Header: React.FC = () => {
       >
         <div className="container-custom flex justify-between items-center">
           {/* Logo */}
-          <a href="#" className="flex items-center">
+          <a href="#" className="flex items-center space-x-1">
             <img 
               src="/lovable-uploads/7a19e252-e029-4c15-976d-cdb745f34961.png" 
               alt="Wapify Logo" 
               className="h-10 w-auto"
             />
-            <span className="ml-2 text-2xl font-bold gradient-text">Wapify</span>
+            <span className="text-2xl font-bold gradient-text">Wapify</span>
           </a>
           
           {/* Desktop Menu */}

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
@@ -31,7 +30,7 @@ const testimonials = [
     quote: "Setup was incredibly easy, and the automated responses have saved me so much time!",
     name: "Priya Patel",
     business: "Priya's Boutique",
-    avatar: "https://images.unsplash.com/photo-1594839688256-c05c2e163145?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
   },
   {
     quote: "My customers love how easy it is to browse and order through WhatsApp now.",
