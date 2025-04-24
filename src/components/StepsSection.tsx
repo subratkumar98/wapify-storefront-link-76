@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 
 const steps = [
   {
@@ -69,13 +69,6 @@ export const StepsSection: React.FC = () => {
               )}
             </div>
           ))}
-        </div>
-        
-        <div className="mt-16 text-center">
-          <a href="#early-access" className="cta-button inline-flex items-center">
-            Create Your Store Now
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </a>
         </div>
       </div>
     </section>
