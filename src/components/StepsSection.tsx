@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 
@@ -32,11 +33,11 @@ export const StepsSection: React.FC = () => {
   return (
     <section id="how-it-works" className="section bg-gray-50 py-20">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-16 opacity-0 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">
             How Wapify Works
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in delay-200">
             Follow these simple steps to transform your WhatsApp into a powerful sales channel
           </p>
         </div>
@@ -45,19 +46,19 @@ export const StepsSection: React.FC = () => {
           {steps.map((step, index) => (
             <div 
               key={step.number}
-              className="step-card opacity-0 animate-fade-in"
+              className="step-card opacity-0 animate-fade-in hover:shadow-xl hover:bg-gray-50 transition-all duration-500"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 flex items-center justify-center bg-whatsapp/10 rounded-full mb-4">
-                  <span className="text-2xl">{step.icon}</span>
+                <div className="w-16 h-16 flex items-center justify-center bg-whatsapp/10 rounded-full mb-4 animate-pulse hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl animate-bounce-light">{step.icon}</span>
                 </div>
                 
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-whatsapp text-white font-bold text-sm mb-3">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-whatsapp text-white font-bold text-sm mb-3 animate-pulse">
                   {step.number}
                 </span>
                 
-                <h3 className="text-xl font-bold mb-3 text-center">{step.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-center hover:text-whatsapp transition-colors duration-300">{step.title}</h3>
                 
                 <p className="text-gray-600 text-center">{step.description}</p>
               </div>

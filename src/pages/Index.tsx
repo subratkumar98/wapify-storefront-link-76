@@ -22,12 +22,35 @@ const Index: React.FC = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
     );
 
     // Observe all elements with opacity-0 class
     document.querySelectorAll('.opacity-0').forEach((el) => {
       observer.observe(el);
+    });
+
+    // Add scroll animations to sections
+    document.querySelectorAll('section').forEach((section, index) => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = `opacity 0.6s ease-out, transform 0.6s ease-out`;
+      section.style.transitionDelay = `${index * 0.1}s`;
+      
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+              sectionObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      
+      sectionObserver.observe(section);
     });
 
     return () => {

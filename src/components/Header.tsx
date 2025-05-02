@@ -42,8 +42,8 @@ export const Header: React.FC = () => {
         }`}
       >
         <div className="container-custom flex justify-between items-center">
-          {/* Logo */}
-          <a href="#" className="flex items-center space-x-1">
+          {/* Logo - removed space-x-1 and adjusted to inline-flex with no gap */}
+          <a href="#" className="inline-flex items-center">
             <img 
               src="/lovable-uploads/7a19e252-e029-4c15-976d-cdb745f34961.png" 
               alt="Wapify Logo" 

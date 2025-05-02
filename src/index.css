@@ -144,6 +144,29 @@
   }
   
   .testimonial-card {
-    @apply bg-white rounded-xl shadow-md p-6 border border-gray-100;
+    @apply bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-all duration-300 hover:border-whatsapp/30;
+  }
+
+  /* New animation classes */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(37,211,102,0.3)];
+  }
+  
+  .animate-float {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-whatsapp after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
 }
