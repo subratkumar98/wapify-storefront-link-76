@@ -46,8 +46,8 @@ export const HeroSection: React.FC = () => {
           <div className="relative h-[500px] md:h-[600px] lg:h-[700px] opacity-0 animate-fade-in animate-delay-200">
             <div className="absolute inset-0 flex items-start justify-center pt-12">
               <div className="relative w-full h-full">
-                {/* Payment Success Notification - Repositioned closer to image */}
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white rounded-lg shadow-lg p-3 z-10 animate-bounce-light hover:scale-105 transition-transform duration-300 cursor-pointer">
+                {/* Payment Success Notification - Restored original animation */}
+                <div className="absolute -top-10 right-0 md:right-12 lg:right-20 bg-white rounded-lg shadow-lg p-3 z-10 animate-bounce-light hover:scale-105 transition-transform duration-300 cursor-pointer">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                     <span className="text-sm font-semibold">Payment Received Successfully!</span>
@@ -63,7 +63,7 @@ export const HeroSection: React.FC = () => {
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-80 md:h-80 lg:w-[450px] lg:h-[450px] object-cover rounded-xl shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
                 
-                {/* New Order Notification */}
+                {/* New Order Notification - Restored original animation */}
                 <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 lg:bottom-16 lg:right-16 bg-white rounded-lg shadow-lg p-3 animate-bounce-light hover:scale-105 transition-transform duration-300 cursor-pointer">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-whatsapp rounded-full animate-pulse"></div>

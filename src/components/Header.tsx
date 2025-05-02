@@ -42,14 +42,14 @@ export const Header: React.FC = () => {
         }`}
       >
         <div className="container-custom flex justify-between items-center">
-          {/* Logo - removed space-x-1 and adjusted to inline-flex with no gap */}
-          <a href="#" className="inline-flex items-center">
+          {/* Logo - adjusted to bring text closer to logo */}
+          <a href="#" className="inline-flex items-center gap-0.5">
             <img 
               src="/lovable-uploads/7a19e252-e029-4c15-976d-cdb745f34961.png" 
               alt="Wapify Logo" 
               className="h-10 w-auto"
             />
-            <span className="text-2xl font-bold gradient-text">Wapify</span>
+            <span className="text-2xl font-bold gradient-text -ml-1">Wapify</span>
           </a>
           
           {/* Desktop Menu */}

@@ -32,17 +32,19 @@ const Index: React.FC = () => {
 
     // Add scroll animations to sections
     document.querySelectorAll('section').forEach((section, index) => {
-      section.style.opacity = '0';
-      section.style.transform = 'translateY(20px)';
-      section.style.transition = `opacity 0.6s ease-out, transform 0.6s ease-out`;
-      section.style.transitionDelay = `${index * 0.1}s`;
+      const sectionElement = section as HTMLElement;
+      sectionElement.style.opacity = '0';
+      sectionElement.style.transform = 'translateY(20px)';
+      sectionElement.style.transition = `opacity 0.6s ease-out, transform 0.6s ease-out`;
+      sectionElement.style.transitionDelay = `${index * 0.1}s`;
       
       const sectionObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
+              const element = entry.target as HTMLElement;
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
               sectionObserver.unobserve(entry.target);
             }
           });
