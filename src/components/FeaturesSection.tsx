@@ -52,11 +52,14 @@ export const FeaturesSection: React.FC = () => {
             <div 
               key={index}
               className="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-all duration-300 transform opacity-0 animate-fade-in hover:scale-105"
-              style={{ animationDelay: `${index * 150}ms` }}
+              style={{ 
+                animationDelay: `${index * 150}ms`,
+                animation: `fade-in 0.5s ease-out forwards, swing-up-down 3s ease-in-out infinite ${index * 0.2}s`
+              }}
             >
               <div className="flex items-start">
                 <div className="flex-shrink-0 mr-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-whatsapp/10 rounded-lg animate-pulse hover:animate-bounce-light transition-all duration-300">
+                  <div className="w-12 h-12 flex items-center justify-center bg-whatsapp/10 rounded-lg hover:animate-bounce-light transition-all duration-300">
                     <span className="text-2xl">{feature.icon}</span>
                   </div>
                 </div>
@@ -70,7 +73,11 @@ export const FeaturesSection: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-20 bg-gradient-to-r from-whatsapp/10 to-whatsapp/5 rounded-2xl p-8 opacity-0 animate-fade-in" style={{ animationDelay: '600ms' }}>
+        <div className="mt-20 bg-gradient-to-r from-whatsapp/10 to-whatsapp/5 rounded-2xl p-8 opacity-0 animate-fade-in" 
+             style={{ 
+               animationDelay: '600ms',
+               animation: 'fade-in 0.5s ease-out forwards, swing-up-down 4s ease-in-out infinite 0.6s'
+             }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold mb-4 animate-fade-in" style={{ animationDelay: '700ms' }}>
@@ -96,7 +103,11 @@ export const FeaturesSection: React.FC = () => {
                     description: "Built specifically for conversational commerce"
                   }
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-start opacity-0 animate-fade-in" style={{ animationDelay: `${800 + idx * 100}ms` }}>
+                  <li key={idx} className="flex items-start opacity-0 animate-fade-in" 
+                      style={{ 
+                        animationDelay: `${800 + idx * 100}ms`,
+                        animation: `fade-in 0.5s ease-out forwards, swing-up-down 3s ease-in-out infinite ${0.8 + idx * 0.1}s`
+                      }}>
                     <div className="flex-shrink-0 mr-2">
                       <div className="w-6 h-6 rounded-full bg-whatsapp flex items-center justify-center text-white animate-pulse">✓</div>
                     </div>
@@ -106,7 +117,11 @@ export const FeaturesSection: React.FC = () => {
               </ul>
             </div>
             
-            <div className="relative h-64 md:h-80 opacity-0 animate-fade-in" style={{ animationDelay: '1000ms' }}>
+            <div className="relative h-64 md:h-80 opacity-0 animate-fade-in" 
+                 style={{ 
+                   animationDelay: '1000ms',
+                   animation: 'fade-in 0.5s ease-out forwards, swing-up-down 4s ease-in-out infinite 1s'
+                 }}>
               <div className="absolute inset-0 flex items-center justify-center">
                 <img 
                   src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
@@ -118,6 +133,14 @@ export const FeaturesSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes swing-up-down {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+          100% { transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 };
