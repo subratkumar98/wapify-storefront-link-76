@@ -7,10 +7,10 @@ import RegistrationForm from './RegistrationForm';
 
 export const EarlyAccessSection: React.FC = () => {
   return (
-    <section id="early-access" className="section bg-gradient-to-b from-white to-gray-50">
+    <section id="early-access" className="section bg-gradient-to-b from-white to-gray-50 py-16">
       <div className="container-custom">
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 opacity-0 animate-fade-in">
-          <div className="p-8 md:p-12">
+        <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 opacity-0 animate-fade-in">
+          <div className="p-6 md:p-10">
             <div className="text-center mb-8">
               <div className="inline-flex items-center mb-6 px-4 py-2 bg-whatsapp/10 rounded-full animate-pulse hover:bg-whatsapp/20 transition-all duration-500">
                 <Timer className="w-5 h-5 text-whatsapp mr-2 animate-countdown" />
