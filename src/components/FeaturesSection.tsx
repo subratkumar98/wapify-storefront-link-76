@@ -134,7 +134,7 @@ export const FeaturesSection: React.FC = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes swing-up-down {
           0% { transform: translateY(0); }
           50% { transform: translateY(-8px); }
