@@ -31,7 +31,7 @@ export const EarlyAccessSection: React.FC = () => {
               </p>
             </div>
             
-            <div className="animate-fade-in delay-400">
+            <div className="animate-fade-in delay-400 flex flex-col items-center">
               <RegistrationForm />
             </div>
           </div>
