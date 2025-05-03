@@ -26,7 +26,7 @@ export const RegistrationForm = () => {
         )}
         
         <iframe 
-          src="https://forms.gle/P5CDNphuTDcqtDoaA"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfQDwEutWnU7LPrCQimJX9Qr0YPoGbci0O5zWZT2KsXpHBdlA/viewform?embedded=true"
           title="Wapify Early Access Registration Form"
           className="w-full h-[600px] border-0 rounded-lg shadow-sm"
           frameBorder="0"
