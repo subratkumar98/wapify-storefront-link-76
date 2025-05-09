@@ -42,15 +42,15 @@ export const Header: React.FC = () => {
         }`}
       >
         <div className="container-custom flex justify-between items-center">
-          {/* Logo - updated with new logo and brand name */}
+          {/* Logo - updated with new size and spacing */}
           <a href="#" className="inline-flex items-center">
             <img 
               src="/lovable-uploads/9d30d353-c3ad-4369-9f53-74d4119557bf.png" 
               alt="Wapify Logo" 
-              className="h-10 w-auto"
+              className="h-12 w-auto" 
             />
-            <div className="flex items-center">
-              <span className="text-2xl font-bold gradient-text -ml-1">Get</span>
+            <div className="flex items-center ml-2">
+              <span className="text-2xl font-bold gradient-text">Get</span>
               <span className="text-2xl font-bold gradient-text">Wapify</span>
             </div>
           </a>

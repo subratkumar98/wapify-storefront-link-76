@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Instagram, Linkedin, Twitter, Youtube, Facebook } from 'lucide-react';
 
@@ -28,11 +27,14 @@ export const Footer: React.FC = () => {
               {/* Updated logo and text style to match header */}
               <div className="flex items-center mb-4">
                 <img 
-                  src="/lovable-uploads/7a19e252-e029-4c15-976d-cdb745f34961.png" 
-                  alt="Wapify Logo" 
-                  className="h-10 w-auto"
+                  src="/lovable-uploads/9d30d353-c3ad-4369-9f53-74d4119557bf.png" 
+                  alt="GetWapify Logo" 
+                  className="h-12 w-auto"
                 />
-                <span className="text-2xl font-bold gradient-text -ml-2">Wapify</span>
+                <div className="flex items-center ml-2">
+                  <span className="text-2xl font-bold gradient-text">Get</span>
+                  <span className="text-2xl font-bold gradient-text">Wapify</span>
+                </div>
               </div>
               
               <p className="text-gray-300 mb-6 max-w-md">
