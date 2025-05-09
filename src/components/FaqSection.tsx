@@ -68,7 +68,7 @@ export const FaqSection: React.FC = () => {
               Our team is just a message away to help you get started
             </p>
             <a 
-              href="mailto:hello@wapify.in" 
+              href="mailto:hello@getwapify.com" 
               className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-800 rounded-lg border border-gray-300 font-semibold hover:bg-gray-50 transition-colors"
             >
               Contact Our Support Team
