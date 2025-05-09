@@ -24,14 +24,14 @@ export const Footer: React.FC = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-1 md:col-span-2">
-              {/* Updated logo and text style to match header */}
+              {/* Updated logo and text style with reduced spacing */}
               <div className="flex items-center mb-4">
                 <img 
                   src="/lovable-uploads/9d30d353-c3ad-4369-9f53-74d4119557bf.png" 
                   alt="GetWapify Logo" 
                   className="h-12 w-auto"
                 />
-                <div className="flex items-center ml-2">
+                <div className="flex items-center ml-1">
                   <span className="text-2xl font-bold gradient-text">Get</span>
                   <span className="text-2xl font-bold gradient-text">Wapify</span>
                 </div>
