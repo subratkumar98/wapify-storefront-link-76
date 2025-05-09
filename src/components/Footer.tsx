@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
               <div className="mb-6">
                 <p className="text-gray-300 mb-1">Contact:</p>
                 <a href="mailto:hello@getwapify.com" className="text-white hover:text-whatsapp">hello@getwapify.com</a>
-                <p className="text-white">+91-90000-00000</p>
+                <p className="text-white">+91 9348848277</p>
               </div>
               
               <div className="flex space-x-4">
