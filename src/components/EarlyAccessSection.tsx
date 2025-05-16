@@ -23,7 +23,7 @@ export const EarlyAccessSection: React.FC = () => {
               </h2>
               
               <p className="text-xl text-gray-600 mb-4 animate-fade-in delay-200">
-                Join the First 500 Businesses to get Wapify for <span className="font-bold">₹799</span> <span className="line-through text-gray-400">₹1999</span> for 3 Months.
+                Join the First 500 Businesses to get GetWapify for <span className="font-bold">₹799</span> <span className="line-through text-gray-400">₹1999</span> for 3 Months.
               </p>
               
               <p className="text-lg font-semibold text-gray-700 mb-6 animate-fade-in delay-300">

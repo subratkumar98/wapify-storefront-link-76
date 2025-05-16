@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 const testimonials = [
   {
-    quote: "I run a cake shop and Wapify gave me a shop link in 2 minutes. My orders doubled in 3 days!",
+    quote: "I run a cake shop and GetWapify gave me a shop link in 2 minutes. My orders doubled in 3 days!",
     name: "Meena Sharma",
     business: "Sweet Slice Cakes",
     avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
@@ -21,7 +22,7 @@ const testimonials = [
     avatar: "https://images.unsplash.com/photo-1569913486515-b74bf7751574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
   },
   {
-    quote: "Wapify is cheaper, faster, and more powerful than anything I've tried.",
+    quote: "GetWapify is cheaper, faster, and more powerful than anything I've tried.",
     name: "Ramesh Kumar",
     business: "TimeMaster Watches",
     avatar: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
@@ -46,10 +47,10 @@ export const TestimonialsSection: React.FC = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why Businesses Love Wapify
+            Why Businesses Love GetWapify
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join hundreds of small businesses already selling more with Wapify
+            Join hundreds of small businesses already selling more with GetWapify
           </p>
         </div>
         

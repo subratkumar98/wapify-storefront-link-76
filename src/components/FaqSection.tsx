@@ -6,7 +6,7 @@ import { FileText } from 'lucide-react';
 const faqs = [
   {
     question: "Do I need a website or coding skills?",
-    answer: "Not at all. Wapify does everything for you. Our platform is designed to be user-friendly and requires zero technical skills to set up and run your online store."
+    answer: "Not at all. GetWapify does everything for you. Our platform is designed to be user-friendly and requires zero technical skills to set up and run your online store."
   },
   {
     question: "Can I upload my own products?",
@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     question: "Will this work for cake shops, fashion stores, jewelry stores, etc.?",
-    answer: "Yes! 100% tailor-made for Instagram + WhatsApp sellers. Wapify is designed to work for virtually any type of retail business that sells products or services online."
+    answer: "Yes! 100% tailor-made for Instagram + WhatsApp sellers. GetWapify is designed to work for virtually any type of retail business that sells products or services online."
   },
   {
     question: "Is ₹799 a one-time payment?",
@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     question: "How do I set up payments?",
-    answer: "Wapify supports multiple payment methods including UPI, bank transfers, and cash on delivery. You can easily configure your preferred payment options through the dashboard."
+    answer: "GetWapify supports multiple payment methods including UPI, bank transfers, and cash on delivery. You can easily configure your preferred payment options through the dashboard."
   }
 ];
 
@@ -44,7 +44,7 @@ export const FaqSection: React.FC = () => {
             Got Questions? We've Got Answers
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Everything you need to know about Wapify
+            Everything you need to know about GetWapify
           </p>
         </div>
         

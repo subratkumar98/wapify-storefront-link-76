@@ -16,10 +16,10 @@ const ComparisonTable: React.FC = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why Wapify is the <span className="gradient-text">#1 Choice</span> for Modern Commerce
+            Why GetWapify is the <span className="gradient-text">#1 Choice</span> for Modern Commerce
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Compare and see why thousands of businesses choose Wapify
+            Compare and see why thousands of businesses choose GetWapify
           </p>
         </div>
 
@@ -28,7 +28,7 @@ const ComparisonTable: React.FC = () => {
             <TableHeader className="bg-gray-50">
               <TableRow>
                 <TableHead className="w-[250px] font-bold">Feature / Platform</TableHead>
-                <TableHead className="bg-whatsapp/5 font-bold">Wapify</TableHead>
+                <TableHead className="bg-whatsapp/5 font-bold">GetWapify</TableHead>
                 <TableHead>Shopify</TableHead>
                 <TableHead>Odoo</TableHead>
                 <TableHead>Wix</TableHead>

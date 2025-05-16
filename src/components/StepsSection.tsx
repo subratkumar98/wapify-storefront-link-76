@@ -35,7 +35,7 @@ export const StepsSection: React.FC = () => {
       <div className="container-custom">
         <div className="text-center mb-16 opacity-0 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">
-            How Wapify Works
+            How GetWapify Works
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in delay-200">
             Follow these simple steps to transform your WhatsApp into a powerful sales channel
