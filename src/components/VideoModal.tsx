@@ -18,8 +18,8 @@ export const VideoModal: React.FC<VideoModalProps> = ({ children }) => {
       <DialogContent className="sm:max-w-4xl p-0 bg-black overflow-hidden">
         <div className="relative pb-[56.25%] h-0">
           <iframe 
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
-            title="Wapify Demo Video"
+            src="https://www.youtube.com/embed/lvpz8876oO8?autoplay=1&si=t_Ul3xpZu8hbRQWf" 
+            title="GetWapify Demo Video"
             className="absolute top-0 left-0 w-full h-full"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
