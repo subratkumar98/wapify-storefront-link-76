@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
                 <a href="https://www.instagram.com/getwapifynow/" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white transition-colors" aria-label="Instagram">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/getwapify-hq-0b2195366" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white transition-colors" aria-label="LinkedIn">
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a href="#" className="text-gray-300 hover:text-white transition-colors" aria-label="Twitter">
