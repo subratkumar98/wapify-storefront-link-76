@@ -9,6 +9,7 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import EarlyAccessSection from '../components/EarlyAccessSection';
 import FaqSection from '../components/FaqSection';
 import Footer from '../components/Footer';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -82,6 +83,7 @@ const Index: React.FC = () => {
       <EarlyAccessSection />
       <FaqSection />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
