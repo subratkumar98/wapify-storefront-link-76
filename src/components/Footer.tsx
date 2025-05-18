@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Instagram, Linkedin, Twitter, Youtube, Facebook } from 'lucide-react';
 
@@ -60,7 +61,7 @@ export const Footer: React.FC = () => {
                 <a href="https://youtube.com/@getwapify" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white transition-colors" aria-label="YouTube">
                   <Youtube className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors" aria-label="Facebook">
+                <a href="https://www.facebook.com/profile.php?id=61575938533647" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white transition-colors" aria-label="Facebook">
                   <Facebook className="h-5 w-5" />
                 </a>
               </div>
