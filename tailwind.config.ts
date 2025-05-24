@@ -103,6 +103,10 @@ export default {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-5px)' }
 				},
+				'spin-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
 				wiggle: {
 					'0%, 100%': { transform: 'rotate(-2deg)' },
 					'50%': { transform: 'rotate(2deg)' }
@@ -123,6 +127,7 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out forwards',
 				'fade-in-right': 'fade-in-right 0.5s ease-out forwards',
 				'bounce-light': 'bounce-light 2s ease-in-out infinite',
+				'spin-slow': 'spin-slow 8s linear infinite',
 				'wiggle': 'wiggle 1s ease-in-out infinite',
 				'pulse': 'pulse 2s ease-in-out infinite',
 				'countdown': 'countdown 2s ease-in-out infinite'
