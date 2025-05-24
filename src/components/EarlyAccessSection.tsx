@@ -1,11 +1,45 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Timer } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
 import AnimatedCounter from './AnimatedCounter';
-import RegistrationForm from './RegistrationForm';
 
 export const EarlyAccessSection: React.FC = () => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [userLocation, setUserLocation] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // Get form elements
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    
+    // Convert FormData to object
+    const data: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+
+    // Submit data to Google Sheets via Google Apps Script
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbxLukAOQzWjg9Yg2ZWjIA4gEHMgIaPdLyMJExViqNpw4K0x5OQoZ2uf1UB1b4cLbhb-og/exec", {
+        method: "POST",
+        mode: "no-cors", // Google Scripts accept no-cors
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.error("Error submitting to Google Sheet:", error);
+    }
+
+    // Save location for payment link and show thank you message
+    setUserLocation(data.location);
+    setFormSubmitted(true);
+  };
+
   return (
     <section id="early-access" className="section bg-gradient-to-b from-white to-gray-50 py-16">
       <div className="container-custom">
@@ -32,7 +66,160 @@ export const EarlyAccessSection: React.FC = () => {
             </div>
             
             <div className="animate-fade-in delay-400 flex flex-col items-center">
-              <RegistrationForm />
+              {!formSubmitted ? (
+                <div className="w-full max-w-2xl mx-auto">
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <div className="form-group">
+                      <label htmlFor="email" className="font-semibold mb-1 block">Email</label>
+                      <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                        required 
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="name" className="font-semibold mb-1 block">Full Name</label>
+                      <input 
+                        type="text" 
+                        id="name" 
+                        name="name"
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                        required 
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="business" className="font-semibold mb-1 block">Business / Shop Name</label>
+                      <input 
+                        type="text" 
+                        id="business"
+                        name="business" 
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                        required 
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="whatsapp" className="font-semibold mb-1 block">WhatsApp Number</label>
+                      <input 
+                        type="tel" 
+                        id="whatsapp"
+                        name="whatsapp" 
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                        required 
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="instagram" className="font-semibold mb-1 block">Instagram Username / Link</label>
+                      <textarea 
+                        id="instagram" 
+                        name="instagram"
+                        rows={2}
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                        required 
+                      ></textarea>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="product" className="font-semibold mb-1 block">What Product Do You Sell?</label>
+                      <textarea 
+                        id="product"
+                        name="product" 
+                        rows={2}
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                        required 
+                      ></textarea>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="reason" className="font-semibold mb-1 block">Why Do You Want To Use GetWapify? (Optional)</label>
+                      <textarea 
+                        id="reason"
+                        name="reason" 
+                        rows={2}
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                      ></textarea>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="language" className="font-semibold mb-1 block">Preferred Language For Storefront?</label>
+                      <select 
+                        id="language"
+                        name="language" 
+                        className="w-full p-3 border border-gray-300 rounded-lg text-gray-700"
+                        required
+                      >
+                        <option value="" disabled selected>Select Language</option>
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Hinglish">Hinglish</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="location" className="font-semibold mb-1 block">Choose Your Location</label>
+                      <select 
+                        id="location"
+                        name="location" 
+                        className="w-full p-3 border border-gray-300 rounded-lg text-gray-700"
+                        required
+                      >
+                        <option value="" disabled selected>Select Location</option>
+                        <option value="INDIA">INDIA</option>
+                        <option value="INTERNATIONAL">INTERNATIONAL</option>
+                      </select>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="referral" className="font-semibold mb-1 block">Referral Code (Optional)</label>
+                      <input 
+                        type="text" 
+                        id="referral"
+                        name="referral" 
+                        className="w-full p-3 border border-gray-300 rounded-lg"
+                      />
+                    </div>
+
+                    <button type="submit" className="mt-4 bg-whatsapp hover:bg-whatsapp-dark text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 w-full">
+                      Submit & Proceed to Payment
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-whatsapp w-full max-w-2xl mx-auto">
+                  <h2 className="text-2xl font-bold mb-4">Thank you for joining GetWapify Early Access!</h2>
+                  {userLocation === "INDIA" ? (
+                    <p className="text-lg">
+                      <a 
+                        href="https://razorpay.me/@GetWapify?amount=ouka7pPo%2Fz198lsjyH%2BoeQ%3D%3D" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline hover:text-blue-800"
+                      >
+                        Click here to securely pay ₹799 via Razorpay
+                      </a>
+                      <br />(100% refundable if not satisfied).
+                    </p>
+                  ) : (
+                    <p className="text-lg">
+                      <a 
+                        href="https://www.paypal.com/ncp/payment/4K68L3C9DKHJ8" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline hover:text-blue-800"
+                      >
+                        Click here to securely pay $15 via PayPal
+                      </a>
+                      <br />(100% refundable if not satisfied).
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
