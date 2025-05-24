@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { FileText } from 'lucide-react';
+import { FileText, Mail, Phone } from 'lucide-react';
+import { Button } from './ui/button';
 
 const faqs = [
   {
@@ -67,12 +68,42 @@ export const FaqSection: React.FC = () => {
             <p className="text-gray-600 mb-6">
               Our team is just a message away to help you get started
             </p>
-            <a 
-              href="mailto:hello@getwapify.com" 
-              className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-800 rounded-lg border border-gray-300 font-semibold hover:bg-gray-50 transition-colors"
+            
+            {/* Contact information */}
+            <div className="flex flex-col space-y-4 items-center mb-6">
+              <div className="flex items-center space-x-2">
+                <Mail className="text-gray-700 h-5 w-5" />
+                <a href="mailto:hello@getwapify.com" className="text-gray-800 hover:text-whatsapp">
+                  hello@getwapify.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="text-gray-700 h-5 w-5" />
+                <a href="https://wa.me/919348848277" target="_blank" rel="noreferrer" className="text-gray-800 hover:text-whatsapp">
+                  +91 93488 48277
+                </a>
+              </div>
+            </div>
+            
+            <Button 
+              asChild
+              variant="outline"
+              className="border-gray-300 hover:bg-gray-100 transition-colors"
             >
-              Contact Our Support Team
-            </a>
+              <a 
+                href="https://wa.me/919348848277" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="inline-flex items-center"
+              >
+                <img 
+                  src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
+                  alt="WhatsApp" 
+                  className="w-5 h-5 mr-2" 
+                />
+                Contact Our Support Team
+              </a>
+            </Button>
           </div>
         </div>
       </div>
