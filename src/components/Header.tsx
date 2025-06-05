@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import CountdownTimer from './CountdownTimer';
-import AnimatedCounter from './AnimatedCounter';
+import CountdownBanner from './CountdownBanner';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,21 +18,8 @@ export const Header: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Countdown Banner */}
-      <div className="bg-whatsapp text-white py-2 px-4 animate-pulse hover:bg-whatsapp-dark transition-all duration-300">
-        <div className="container-custom flex flex-col md:flex-row items-center justify-center md:justify-between text-sm">
-          <div className="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">
-            <CountdownTimer />
-            <span className="inline animate-fade-in">Only 24 hours left</span>
-          </div>
-          <div className="flex items-center space-x-2 mt-1 md:mt-0 hover:scale-105 transition-transform duration-300">
-            <AnimatedCounter end={468} duration={2000} suffix=" businesses joined already" />
-          </div>
-          <div className="mt-1 md:mt-0 hover:scale-105 transition-transform duration-300">
-            <span>Only <span className="font-bold animate-bounce-light">32</span> seats left at <span className="font-bold">₹799</span> <span className="line-through text-gray-200">₹1999</span></span>
-          </div>
-        </div>
-      </div>
+      {/* New Countdown Banner */}
+      <CountdownBanner />
       
       {/* Navigation */}
       <nav 
