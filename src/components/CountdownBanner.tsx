@@ -36,35 +36,35 @@ export const CountdownBanner: React.FC = () => {
   }, []);
 
   return (
-    <div className="countdown-banner bg-whatsapp text-white py-6 px-6 text-center shadow-lg animate-fade-in rounded-b-xl relative z-50">
-      <h2 className="text-2xl md:text-3xl font-bold mb-2 m-0">
+    <div className="bg-whatsapp text-white py-5 px-5 text-center shadow-md relative z-50">
+      <h2 className="text-2xl font-bold mb-2.5 m-0">
         🚀 GetWapify Early Access Ends Soon!
       </h2>
-      <div className="text-base mb-4 opacity-95">
+      <div className="text-base mb-4">
         8,947 businesses joined already
       </div>
 
-      <div className="countdown-timer inline-flex justify-center gap-4 text-xl font-bold animate-fade-in">
-        <div className="countdown-box bg-white/20 rounded-lg py-3 px-4 min-w-[70px] animate-bounce">
+      <div className="inline-flex justify-center gap-4 text-xl font-bold">
+        <div className="bg-white/15 rounded-lg py-2.5 px-4 min-w-[70px]">
           <span className="block">{timeLeft.days}</span>
           <span className="text-xs font-normal mt-1 block">Days</span>
         </div>
-        <div className="countdown-box bg-white/20 rounded-lg py-3 px-4 min-w-[70px] animate-bounce">
+        <div className="bg-white/15 rounded-lg py-2.5 px-4 min-w-[70px]">
           <span className="block">{timeLeft.hours}</span>
           <span className="text-xs font-normal mt-1 block">Hours</span>
         </div>
-        <div className="countdown-box bg-white/20 rounded-lg py-3 px-4 min-w-[70px] animate-bounce">
+        <div className="bg-white/15 rounded-lg py-2.5 px-4 min-w-[70px]">
           <span className="block">{timeLeft.minutes}</span>
           <span className="text-xs font-normal mt-1 block">Minutes</span>
         </div>
-        <div className="countdown-box bg-white/20 rounded-lg py-3 px-4 min-w-[70px] animate-bounce">
+        <div className="bg-white/15 rounded-lg py-2.5 px-4 min-w-[70px]">
           <span className="block">{timeLeft.seconds}</span>
           <span className="text-xs font-normal mt-1 block">Seconds</span>
         </div>
       </div>
 
-      <div className="price-note mt-4 text-lg font-bold animate-pulse">
-        Only <strong>1,053</strong> seats left at ₹799 <span className="line-through text-gray-200 font-normal">₹1,999</span>
+      <div className="mt-4 text-base font-bold">
+        Only <strong>1,053</strong> seats left at ₹799 <span className="line-through text-gray-200">₹1,999</span>
       </div>
     </div>
   );
