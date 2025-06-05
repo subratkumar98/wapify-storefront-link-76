@@ -76,15 +76,18 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <HeroSection />
-      <StepsSection />
-      <FeaturesSection />
-      <PricingFeaturesSection />
-      <ComparisonTable />
-      <TestimonialsSection />
-      <EarlyAccessSection />
-      <FaqSection />
-      <Footer />
+      {/* Add proper top margin to account for fixed header with banner */}
+      <div className="pt-32 md:pt-36">
+        <HeroSection />
+        <StepsSection />
+        <FeaturesSection />
+        <PricingFeaturesSection />
+        <ComparisonTable />
+        <TestimonialsSection />
+        <EarlyAccessSection />
+        <FaqSection />
+        <Footer />
+      </div>
       <WhatsAppButton />
     </div>
   );
