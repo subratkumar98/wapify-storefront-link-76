@@ -1,32 +1,13 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import { Timer } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
 import AnimatedCounter from './AnimatedCounter';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from './ui/dialog';
 
 export const EarlyAccessSection: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [userLocation, setUserLocation] = useState("");
-
-  // Listen for custom event to open dialog
-  useEffect(() => {
-    const handleOpenDialog = () => {
-      setIsModalOpen(true);
-    };
-
-    window.addEventListener('openEarlyAccessDialog', handleOpenDialog);
-    
-    return () => {
-      window.removeEventListener('openEarlyAccessDialog', handleOpenDialog);
-    };
-  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -63,13 +44,7 @@ export const EarlyAccessSection: React.FC = () => {
   const resetForm = () => {
     setFormSubmitted(false);
     setUserLocation("");
-  };
-
-  const handleModalClose = (open: boolean) => {
-    setIsModalOpen(open);
-    if (!open) {
-      resetForm();
-    }
+    setShowForm(false);
   };
 
   return (
@@ -77,44 +52,44 @@ export const EarlyAccessSection: React.FC = () => {
       <div className="container-custom">
         <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 opacity-0 animate-fade-in">
           <div className="p-6 md:p-10">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center mb-6 px-4 py-2 bg-whatsapp/10 rounded-full animate-pulse hover:bg-whatsapp/20 transition-all duration-500">
-                <Timer className="w-5 h-5 text-whatsapp mr-2 animate-countdown" />
-                <CountdownTimer />
-                <span className="ml-2 font-semibold">Only 24 Hours Left!</span>
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in delay-100">
-                Early Access Registration
-              </h2>
-              
-              <p className="text-xl text-gray-600 mb-4 animate-fade-in delay-200">
-                Join the First 500 Businesses to get GetWapify for <span className="font-bold">₹799</span> <span className="line-through text-gray-400">₹1999</span> for 3 Months.
-              </p>
-              
-              <p className="text-lg font-semibold text-gray-700 mb-6 animate-fade-in delay-300">
-                Already <AnimatedCounter end={468} duration={1500} /> Shops Joined – Don't Miss Out!
-              </p>
-            </div>
-            
-            <div className="animate-fade-in delay-400 flex flex-col items-center">
-              <Dialog open={isModalOpen} onOpenChange={handleModalClose}>
-                <DialogTrigger asChild>
+            {!showForm ? (
+              <>
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center mb-6 px-4 py-2 bg-whatsapp/10 rounded-full animate-pulse hover:bg-whatsapp/20 transition-all duration-500">
+                    <Timer className="w-5 h-5 text-whatsapp mr-2 animate-countdown" />
+                    <CountdownTimer />
+                    <span className="ml-2 font-semibold">Only 24 Hours Left!</span>
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in delay-100">
+                    Early Access Registration
+                  </h2>
+                  
+                  <p className="text-xl text-gray-600 mb-4 animate-fade-in delay-200">
+                    Join the First 500 Businesses to get GetWapify for <span className="font-bold">₹799</span> <span className="line-through text-gray-400">₹1999</span> for 3 Months.
+                  </p>
+                  
+                  <p className="text-lg font-semibold text-gray-700 mb-6 animate-fade-in delay-300">
+                    Already <AnimatedCounter end={468} duration={1500} /> Shops Joined – Don't Miss Out!
+                  </p>
+                </div>
+                
+                <div className="animate-fade-in delay-400 flex flex-col items-center">
                   <button 
                     className="bg-whatsapp hover:bg-whatsapp-dark text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-xl"
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={() => setShowForm(true)}
                   >
                     Get Early Access Now
                   </button>
-                </DialogTrigger>
-                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-                  <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold text-center text-whatsapp mb-4">
+                </div>
+              </>
+            ) : (
+              <div className="max-w-2xl mx-auto">
+                {!formSubmitted ? (
+                  <>
+                    <h1 className="text-center text-whatsapp text-2xl font-bold mb-6">
                       GetWapify – Join Early Access Now!
-                    </DialogTitle>
-                  </DialogHeader>
-                  
-                  {!formSubmitted ? (
+                    </h1>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                       <div className="form-group">
                         <label htmlFor="email" className="font-semibold mb-1 block">Email</label>
@@ -232,46 +207,62 @@ export const EarlyAccessSection: React.FC = () => {
                         />
                       </div>
 
-                      <button 
-                        type="submit" 
-                        className="mt-6 p-3.5 bg-whatsapp hover:bg-whatsapp-dark text-white text-lg border-none rounded-lg cursor-pointer transition-colors duration-300 ease-out"
-                      >
-                        Submit & Proceed to Payment
-                      </button>
+                      <div className="flex gap-4 mt-6">
+                        <button 
+                          type="submit" 
+                          className="flex-1 p-3.5 bg-whatsapp hover:bg-whatsapp-dark text-white text-lg border-none rounded-lg cursor-pointer transition-colors duration-300 ease-out"
+                        >
+                          Submit & Proceed to Payment
+                        </button>
+                        <button 
+                          type="button" 
+                          onClick={resetForm}
+                          className="px-6 py-3.5 bg-gray-500 hover:bg-gray-600 text-white text-lg border-none rounded-lg cursor-pointer transition-colors duration-300"
+                        >
+                          Back
+                        </button>
+                      </div>
                     </form>
-                  ) : (
-                    <div className="mt-10 p-5 bg-gray-50 border-l-6 border-whatsapp rounded-lg font-bold">
-                      <h2 className="text-xl font-bold mb-4 text-whatsapp">Thank you for joining GetWapify Early Access!</h2>
-                      {userLocation === "INDIA" ? (
-                        <p className="text-base">
-                          <a 
-                            href="https://razorpay.me/@GetWapify?amount=ouka7pPo%2Fz198lsjyH%2BoeQ%3D%3D" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Click here to securely pay ₹799 via Razorpay
-                          </a>
-                          <br />(100% refundable if not satisfied).
-                        </p>
-                      ) : (
-                        <p className="text-base">
-                          <a 
-                            href="https://www.paypal.com/ncp/payment/2GTWAL7VFX3TW" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Click here to securely pay $15 via PayPal
-                          </a>
-                          <br />(100% refundable if not satisfied).
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </DialogContent>
-              </Dialog>
-            </div>
+                  </>
+                ) : (
+                  <div className="mt-10 p-5 bg-gray-50 border-l-6 border-whatsapp rounded-lg font-bold">
+                    <h2 className="text-xl font-bold mb-4 text-whatsapp">Thank you for joining GetWapify Early Access!</h2>
+                    {userLocation === "INDIA" ? (
+                      <p className="text-base mb-4">
+                        <a 
+                          href="https://razorpay.me/@GetWapify?amount=ouka7pPo%2Fz198lsjyH%2BoeQ%3D%3D" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline hover:text-blue-800"
+                        >
+                          Click here to securely pay ₹799 via Razorpay
+                        </a>
+                        <br />(100% refundable if not satisfied).
+                      </p>
+                    ) : (
+                      <p className="text-base mb-4">
+                        <a 
+                          href="https://www.paypal.com/ncp/payment/2GTWAL7VFX3TW" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline hover:text-blue-800"
+                        >
+                          Click here to securely pay $15 via PayPal
+                        </a>
+                        <br />(100% refundable if not satisfied).
+                      </p>
+                    )}
+                    <button 
+                      type="button" 
+                      onClick={resetForm}
+                      className="px-6 py-3 bg-whatsapp hover:bg-whatsapp-dark text-white text-base border-none rounded-lg cursor-pointer transition-colors duration-300"
+                    >
+                      Submit Another Registration
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
