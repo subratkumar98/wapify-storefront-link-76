@@ -56,14 +56,10 @@ const features = [
 ];
 
 const PricingFeaturesSection: React.FC = () => {
-  const scrollToEarlyAccessAndOpenForm = () => {
+  const scrollToEarlyAccess = () => {
     const earlyAccessSection = document.getElementById('early-access');
     if (earlyAccessSection) {
       earlyAccessSection.scrollIntoView({ behavior: 'smooth' });
-      // Trigger the dialog opening by dispatching a custom event
-      setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('openEarlyAccessDialog'));
-      }, 500);
     }
   };
 
@@ -131,7 +127,7 @@ const PricingFeaturesSection: React.FC = () => {
             "Recover your ₹799 with just one extra order per week. Everything else is bonus."
           </p>
           <button
-            onClick={scrollToEarlyAccessAndOpenForm}
+            onClick={scrollToEarlyAccess}
             className="bg-whatsapp hover:bg-whatsapp/90 text-white font-bold text-xl mb-6 py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Join for ₹799 Today — Limited to First 10,000 Sellers, Already 8,947 joined.
