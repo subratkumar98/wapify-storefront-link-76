@@ -57,6 +57,20 @@ const features = [
 ];
 
 const PricingFeaturesSection: React.FC = () => {
+  const scrollToEarlyAccess = () => {
+    const earlyAccessSection = document.getElementById('early-access');
+    if (earlyAccessSection) {
+      earlyAccessSection.scrollIntoView({ behavior: 'smooth' });
+      // Find and click the "Get Early Access Now" button after scrolling
+      setTimeout(() => {
+        const earlyAccessButton = earlyAccessSection.querySelector('button');
+        if (earlyAccessButton) {
+          earlyAccessButton.click();
+        }
+      }, 500);
+    }
+  };
+
   return (
     <section className="section bg-gradient-to-b from-gray-50 to-white py-20">
       <div className="container-custom">
@@ -120,9 +134,12 @@ const PricingFeaturesSection: React.FC = () => {
           <p className="text-lg font-semibold mb-4">
             "Recover your ₹799 with just one extra order per week. Everything else is bonus."
           </p>
-          <p className="text-whatsapp font-bold text-xl mb-6">
-            Join for ₹799 Today — Limited to First 10,000 Sellers, Already 8,934 joined.
-          </p>
+          <button
+            onClick={scrollToEarlyAccess}
+            className="bg-whatsapp hover:bg-whatsapp/90 text-white font-bold text-xl mb-6 py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            Join for ₹799 Today — Limited to First 10,000 Sellers, Already 8,947 joined.
+          </button>
           <p className="text-gray-600">
             This full toolkit is worth ₹19,999 but yours for only ₹799 for 3 months — price rises soon!
           </p>
