@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Timer } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
 import AnimatedCounter from './AnimatedCounter';
@@ -15,6 +14,19 @@ export const EarlyAccessSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [userLocation, setUserLocation] = useState("");
+
+  // Listen for custom event to open dialog
+  useEffect(() => {
+    const handleOpenDialog = () => {
+      setIsModalOpen(true);
+    };
+
+    window.addEventListener('openEarlyAccessDialog', handleOpenDialog);
+    
+    return () => {
+      window.removeEventListener('openEarlyAccessDialog', handleOpenDialog);
+    };
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
