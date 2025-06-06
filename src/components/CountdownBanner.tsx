@@ -36,34 +36,34 @@ export const CountdownBanner: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-whatsapp text-white py-5 px-5 text-center shadow-md relative z-50">
-      <h2 className="text-2xl font-bold mb-2.5 m-0">
+    <div className="bg-whatsapp text-white py-3 sm:py-4 md:py-5 px-3 sm:px-4 md:px-5 text-center shadow-md relative z-50">
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-2.5 m-0">
         🚀 GetWapify Early Access Ends Soon!
       </h2>
-      <div className="text-base mb-4">
+      <div className="text-sm sm:text-base mb-3 sm:mb-4">
         8,947 businesses joined already
       </div>
 
-      <div className="inline-flex justify-center gap-4 text-xl font-bold">
-        <div className="bg-white/15 rounded-lg py-2.5 px-4 min-w-[70px]">
-          <span className="block">{timeLeft.days}</span>
+      <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 text-base sm:text-lg md:text-xl font-bold">
+        <div className="bg-white/15 rounded-lg py-2 sm:py-2.5 px-2 sm:px-3 md:px-4 min-w-[60px] sm:min-w-[65px] md:min-w-[70px]">
+          <span className="block text-sm sm:text-base md:text-xl">{timeLeft.days}</span>
           <span className="text-xs font-normal mt-1 block">Days</span>
         </div>
-        <div className="bg-white/15 rounded-lg py-2.5 px-4 min-w-[70px]">
-          <span className="block">{timeLeft.hours}</span>
+        <div className="bg-white/15 rounded-lg py-2 sm:py-2.5 px-2 sm:px-3 md:px-4 min-w-[60px] sm:min-w-[65px] md:min-w-[70px]">
+          <span className="block text-sm sm:text-base md:text-xl">{timeLeft.hours}</span>
           <span className="text-xs font-normal mt-1 block">Hours</span>
         </div>
-        <div className="bg-white/15 rounded-lg py-2.5 px-4 min-w-[70px]">
-          <span className="block">{timeLeft.minutes}</span>
+        <div className="bg-white/15 rounded-lg py-2 sm:py-2.5 px-2 sm:px-3 md:px-4 min-w-[60px] sm:min-w-[65px] md:min-w-[70px]">
+          <span className="block text-sm sm:text-base md:text-xl">{timeLeft.minutes}</span>
           <span className="text-xs font-normal mt-1 block">Minutes</span>
         </div>
-        <div className="bg-white/15 rounded-lg py-2.5 px-4 min-w-[70px]">
-          <span className="block">{timeLeft.seconds}</span>
+        <div className="bg-white/15 rounded-lg py-2 sm:py-2.5 px-2 sm:px-3 md:px-4 min-w-[60px] sm:min-w-[65px] md:min-w-[70px]">
+          <span className="block text-sm sm:text-base md:text-xl">{timeLeft.seconds}</span>
           <span className="text-xs font-normal mt-1 block">Seconds</span>
         </div>
       </div>
 
-      <div className="mt-4 text-base font-bold">
+      <div className="mt-3 sm:mt-4 text-sm sm:text-base font-bold px-2">
         Only <strong>1,053</strong> seats left at ₹799 <span className="line-through text-gray-200">₹1,999</span>
       </div>
     </div>
