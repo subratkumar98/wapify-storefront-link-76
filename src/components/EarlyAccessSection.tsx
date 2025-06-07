@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Timer } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
@@ -248,12 +247,12 @@ export const EarlyAccessSection: React.FC = () => {
               ) : (
                 <p className="text-base mb-4">
                   <a 
-                    href="https://www.paypal.com/ncp/payment/2GTWAL7VFX3TW" 
+                    href="https://www.paypal.com/ncp/payment/XWGKK8LBMHP5A" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-blue-600 underline hover:text-blue-800"
                   >
-                    Click here to securely pay $15 via PayPal
+                    Click here to securely pay $10 via PayPal
                   </a>
                   <br />(100% refundable if not satisfied).
                 </p>
