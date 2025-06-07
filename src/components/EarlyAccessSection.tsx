@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Timer } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
@@ -69,7 +70,7 @@ export const EarlyAccessSection: React.FC = () => {
                 </p>
                 
                 <p className="text-lg font-semibold text-gray-700 mb-6 animate-fade-in delay-300">
-                  Already <AnimatedCounter end={468} duration={1500} /> Shops Joined – Don't Miss Out!
+                  Already <AnimatedCounter end={8947} duration={1500} /> Shops Joined – Don't Miss Out!
                 </p>
               </div>
               
@@ -247,7 +248,7 @@ export const EarlyAccessSection: React.FC = () => {
               ) : (
                 <p className="text-base mb-4">
                   <a 
-                    href="https://www.paypal.com/ncp/payment/XWGKK8LBMHP5A" 
+                    href="https://www.paypal.com/ncp/payment/2GTWAL7VFX3TW" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-blue-600 underline hover:text-blue-800"
