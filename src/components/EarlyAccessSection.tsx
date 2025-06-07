@@ -252,7 +252,7 @@ export const EarlyAccessSection: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-blue-600 underline hover:text-blue-800"
                   >
-                    Click here to securely pay $10 via PayPal
+                    Click here to securely pay $19 via PayPal
                   </a>
                   <br />(100% refundable if not satisfied).
                 </p>
