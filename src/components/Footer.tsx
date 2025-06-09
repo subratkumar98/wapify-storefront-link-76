@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Instagram, Linkedin, Twitter, Youtube, Facebook } from 'lucide-react';
 
@@ -45,7 +44,11 @@ export const Footer: React.FC = () => {
               <div className="mb-6">
                 <p className="text-gray-300 mb-1">Contact:</p>
                 <a href="mailto:hello@getwapify.com" className="text-white hover:text-whatsapp">hello@getwapify.com</a>
-                <p className="text-white">+91 9348848277</p>
+                <div>
+                  <a href="tel:+919348848277" style={{color: '#000', fontWeight: 'bold', textDecoration: 'none'}}>
+                    ☎️ +91 93488 48277
+                  </a>
+                </div>
               </div>
               
               <div className="flex space-x-4">
