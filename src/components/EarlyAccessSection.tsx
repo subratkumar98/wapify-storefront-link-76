@@ -1,7 +1,5 @@
-
 import React, { useState } from 'react';
-import { Timer } from 'lucide-react';
-import CountdownTimer from './CountdownTimer';
+import PillCountdownTimer from './PillCountdownTimer';
 import AnimatedCounter from './AnimatedCounter';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
 
@@ -55,10 +53,8 @@ export const EarlyAccessSection: React.FC = () => {
           <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 opacity-0 animate-fade-in">
             <div className="p-6 md:p-10">
               <div className="text-center mb-8">
-                <div className="inline-flex items-center mb-6 px-4 py-2 bg-whatsapp/10 rounded-full animate-pulse hover:bg-whatsapp/20 transition-all duration-500">
-                  <Timer className="w-5 h-5 text-whatsapp mr-2 animate-countdown" />
-                  <CountdownTimer />
-                  <span className="ml-2 font-semibold">Only 24 Hours Left!</span>
+                <div className="mb-6 animate-pulse hover:bg-whatsapp/20 transition-all duration-500">
+                  <PillCountdownTimer />
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in delay-100">
