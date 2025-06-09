@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { FileText, Mail, Phone } from 'lucide-react';
+import { FileText, Mail } from 'lucide-react';
 import { Button } from './ui/button';
 
 const faqs = [
@@ -78,9 +78,8 @@ export const FaqSection: React.FC = () => {
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="text-gray-700 h-5 w-5" />
-                <a href="https://wa.me/919348848277" target="_blank" rel="noreferrer" className="text-gray-800 hover:text-whatsapp">
-                  +91 93488 48277
+                <a href="tel:+919348848277" style={{color: '#000', fontWeight: 'bold', textDecoration: 'none'}}>
+                  ☎️ +91 93488 48277
                 </a>
               </div>
             </div>
