@@ -73,7 +73,7 @@ export const FaqSection: React.FC = () => {
             <div className="flex flex-col space-y-4 items-center mb-6">
               <div className="flex items-center space-x-2">
                 <Mail className="text-gray-700 h-5 w-5" />
-                <a href="mailto:hello@getwapify.com" className="text-gray-800 hover:text-whatsapp">
+                <a href="mailto:hello@getwapify.com" style={{color: '#000', fontWeight: 'bold', textDecoration: 'none'}}>
                   hello@getwapify.com
                 </a>
               </div>
@@ -88,6 +88,7 @@ export const FaqSection: React.FC = () => {
               asChild
               variant="outline"
               className="border-gray-300 hover:bg-gray-100 transition-colors"
+              style={{color: '#000', fontWeight: 'bold'}}
             >
               <a 
                 href="https://wa.me/919348848277" 
