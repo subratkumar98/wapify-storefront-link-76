@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Sparkles, CheckCircle } from 'lucide-react';
 import { VideoButton } from './VideoModal';
@@ -31,14 +30,13 @@ export const HeroSection: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-6">
               <a 
-                href="#early-access" 
+                href="#pricing" 
                 className="cta-button inline-flex items-center justify-center hover:animate-wiggle"
               >
-                Join Early Access Now at ₹799
+                Get Started for Free
                 <ArrowRight className="ml-2 h-5 w-5 animate-bounce-light" />
               </a>
               
-              <VideoButton />
             </div>
           </div>
           

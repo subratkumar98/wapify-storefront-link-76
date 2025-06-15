@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingBag, MessageSquare, Instagram, Package, CircleDollarSign, BarChart3, Users, Rocket, Wallet } from 'lucide-react';
@@ -56,10 +57,10 @@ const features = [
 ];
 
 const PricingFeaturesSection: React.FC = () => {
-  const scrollToEarlyAccess = () => {
-    const earlyAccessSection = document.getElementById('early-access');
-    if (earlyAccessSection) {
-      earlyAccessSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -124,16 +125,16 @@ const PricingFeaturesSection: React.FC = () => {
         {/* Psychological Hooks */}
         <div className="bg-gray-50 rounded-xl p-8 text-center max-w-3xl mx-auto shadow-md border border-gray-100">
           <p className="text-lg font-semibold mb-4">
-            "Recover your ₹799 with just one extra order per week. Everything else is bonus."
+            "Start free and upgrade when you're ready to scale your business."
           </p>
           <button
-            onClick={scrollToEarlyAccess}
+            onClick={scrollToPricing}
             className="bg-whatsapp hover:bg-whatsapp/90 text-white font-bold text-xl mb-6 py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            Join for ₹799 Today — Limited to First 10,000 Sellers, Already 8,947 joined.
+            Get Started for Free
           </button>
           <p className="text-gray-600">
-            This full toolkit is worth ₹19,999 but yours for only ₹799 for 3 months — price rises soon!
+            Start with our free plan and upgrade to Pro for advanced features.
           </p>
         </div>
       </div>

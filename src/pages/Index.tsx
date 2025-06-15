@@ -5,6 +5,7 @@ import HeroSection from '../components/HeroSection';
 import StepsSection from '../components/StepsSection';
 import FeaturesSection from '../components/FeaturesSection';
 import PricingFeaturesSection from '../components/PricingFeaturesSection';
+import PricingSection from '../components/PricingSection';
 import ComparisonTable from '../components/ComparisonTable';
 import TestimonialsSection from '../components/TestimonialsSection';
 import EarlyAccessSection from '../components/EarlyAccessSection';
@@ -82,6 +83,7 @@ const Index: React.FC = () => {
         <StepsSection />
         <FeaturesSection />
         <PricingFeaturesSection />
+        <PricingSection />
         <ComparisonTable />
         <TestimonialsSection />
         <EarlyAccessSection />
