@@ -26,7 +26,7 @@ export const EarlyAccessSection: React.FC = () => {
               </h2>
               
               <p className="text-xl text-gray-600 mb-4 animate-fade-in delay-200">
-                Start your WhatsApp store journey today with our <span className="font-bold">Free Plan</span> and upgrade when you're ready.
+                Start your WhatsApp store journey today with our <span className="font-bold">Free Plan</span> and upgrade to Pro when you're ready.
               </p>
               
               <p className="text-lg font-semibold text-gray-700 mb-6 animate-fade-in delay-300">
@@ -34,13 +34,22 @@ export const EarlyAccessSection: React.FC = () => {
               </p>
             </div>
             
-            <div className="animate-fade-in delay-400 flex flex-col items-center">
+            <div className="animate-fade-in delay-400 flex flex-col items-center space-y-4">
               <button 
-                className="bg-whatsapp hover:bg-whatsapp-dark text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-xl"
+                className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-xl"
                 onClick={scrollToPricing}
               >
                 Get Started for Free
               </button>
+              <button 
+                className="bg-whatsapp hover:bg-whatsapp-dark text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg border-2 border-whatsapp"
+                onClick={scrollToPricing}
+              >
+                Unlock Full Store – ₹9/month
+              </button>
+              <p className="text-sm text-gray-600 text-center">
+                Compare plans and features above
+              </p>
             </div>
           </div>
         </div>
