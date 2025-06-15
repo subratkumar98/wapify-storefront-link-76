@@ -12,7 +12,13 @@ import {
   Instagram, 
   Twitter,
   MessageCircle,
-  Crown
+  Crown,
+  Sparkles,
+  TrendingUp,
+  Users,
+  Eye,
+  Link,
+  Download
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -25,13 +31,13 @@ const ShareSection: React.FC<ShareSectionProps> = ({ userPlan, storeHandle }) =>
   const { toast } = useToast();
   const storeUrl = `https://getwapify.com/@${storeHandle}`;
   const [customMessage, setCustomMessage] = useState(
-    `Check out my store! Amazing products at great prices. ${storeUrl}`
+    `🛍️ Check out my amazing store! Quality products at unbeatable prices ✨\n\n${storeUrl}`
   );
 
   const copyLink = () => {
     navigator.clipboard.writeText(storeUrl);
     toast({
-      title: "Link Copied!",
+      title: "🎉 Link Copied!",
       description: "Store link copied to clipboard",
     });
   };
@@ -54,7 +60,7 @@ const ShareSection: React.FC<ShareSectionProps> = ({ userPlan, storeHandle }) =>
         break;
       case 'instagram':
         toast({
-          title: "Instagram Sharing",
+          title: "📸 Instagram Sharing",
           description: "Copy the link and share it in your Instagram story or bio",
         });
         copyLink();
@@ -69,7 +75,7 @@ const ShareSection: React.FC<ShareSectionProps> = ({ userPlan, storeHandle }) =>
   const generateQR = () => {
     if (userPlan === 'free') {
       toast({
-        title: "Upgrade Required",
+        title: "🔒 Upgrade Required",
         description: "QR code generation available in Pro plan",
         variant: "destructive"
       });
@@ -77,146 +83,213 @@ const ShareSection: React.FC<ShareSectionProps> = ({ userPlan, storeHandle }) =>
     }
     
     toast({
-      title: "QR Code Generated",
+      title: "🎯 QR Code Generated",
       description: "QR code is ready for download",
     });
   };
 
+  const sharingTips = [
+    { icon: "📱", tip: "Share on your WhatsApp status" },
+    { icon: "📸", tip: "Add link to Instagram bio" },
+    { icon: "💬", tip: "Send to family & friends" },
+    { icon: "📧", tip: "Include in email signature" },
+    { icon: "🌐", tip: "Post on Facebook page" },
+    { icon: "💼", tip: "Share in business groups" }
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold flex items-center gap-2">
-          <Share2 className="h-6 w-6" />
+    <div className="max-w-6xl mx-auto p-6 space-y-8">
+      <div className="text-center">
+        <h2 className="text-4xl font-bold flex items-center justify-center gap-3 mb-4">
+          <Share2 className="h-10 w-10 text-blue-600" />
           Share Your Store
         </h2>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Get your store in front of customers! Share across platforms and watch your sales grow 🚀
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Store Link */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Store Link</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <div className="flex items-center space-x-2 p-3 bg-gray-50 rounded-lg">
-                <span className="font-mono text-sm flex-1">{storeUrl}</span>
-                <Button size="sm" onClick={copyLink}>
-                  <Copy className="h-4 w-4" />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Store Link & Message */}
+        <div className="lg:col-span-2 space-y-6">
+          <Card className="border-0 shadow-xl">
+            <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+              <CardTitle className="flex items-center gap-2">
+                <Link className="h-5 w-5" />
+                Your Store Link
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6 space-y-4">
+              <div className="flex items-center space-x-3 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border">
+                <span className="font-mono text-sm flex-1 text-gray-800">{storeUrl}</span>
+                <Button size="sm" onClick={copyLink} className="shrink-0">
+                  <Copy className="h-4 w-4 mr-2" />
+                  Copy
                 </Button>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Custom Share Message
-              </label>
-              <textarea
-                className="w-full p-3 border rounded-lg resize-none"
-                rows={3}
-                value={customMessage}
-                onChange={(e) => setCustomMessage(e.target.value)}
-                placeholder="Add your custom message here..."
-              />
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* QR Code */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              QR Code
-              {userPlan === 'free' && <Crown className="h-4 w-4 text-orange-500" />}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="text-center">
-              <div className="w-32 h-32 bg-gray-200 mx-auto rounded-lg flex items-center justify-center mb-4">
-                <QrCode className="h-16 w-16 text-gray-400" />
+              <div>
+                <label className="block text-sm font-semibold mb-3 text-gray-700">
+                  🎯 Customize Your Share Message
+                </label>
+                <textarea
+                  className="w-full p-4 border-2 border-gray-200 rounded-xl resize-none focus:border-blue-500 transition-colors"
+                  rows={4}
+                  value={customMessage}
+                  onChange={(e) => setCustomMessage(e.target.value)}
+                  placeholder="Add your custom message here..."
+                />
+                <p className="text-xs text-gray-500 mt-2">
+                  💡 Tip: Use emojis and exciting words to make your message more attractive!
+                </p>
               </div>
-              <p className="text-sm text-gray-600 mb-4">
-                Generate QR code for easy sharing
+            </CardContent>
+          </Card>
+
+          {/* Social Media Sharing */}
+          <Card className="border-0 shadow-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Sparkles className="h-5 w-5 text-purple-600" />
+                Share on Social Media
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="grid grid-cols-2 gap-4">
+                <Button
+                  onClick={() => shareOnPlatform('whatsapp')}
+                  className="bg-[#25D366] hover:bg-[#128C7E] text-white h-14 text-base"
+                >
+                  <MessageCircle className="h-5 w-5 mr-3" />
+                  WhatsApp
+                </Button>
+                
+                <Button
+                  onClick={() => shareOnPlatform('facebook')}
+                  className="bg-[#1877F2] hover:bg-[#166FE5] text-white h-14 text-base"
+                >
+                  <Facebook className="h-5 w-5 mr-3" />
+                  Facebook
+                </Button>
+                
+                <Button
+                  onClick={() => shareOnPlatform('instagram')}
+                  className="bg-gradient-to-r from-[#833AB4] to-[#E1306C] hover:opacity-90 text-white h-14 text-base"
+                >
+                  <Instagram className="h-5 w-5 mr-3" />
+                  Instagram
+                </Button>
+                
+                <Button
+                  onClick={() => shareOnPlatform('twitter')}
+                  className="bg-[#1DA1F2] hover:bg-[#0C90E1] text-white h-14 text-base"
+                >
+                  <Twitter className="h-5 w-5 mr-3" />
+                  Twitter
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Quick Sharing Tips */}
+          <Card className="border-0 shadow-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="h-5 w-5 text-green-600" />
+                Quick Sharing Ideas
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {sharingTips.map((tip, index) => (
+                  <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <span className="text-2xl">{tip.icon}</span>
+                    <span className="text-sm font-medium">{tip.tip}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* QR Code & Stats */}
+        <div className="space-y-6">
+          <Card className="border-0 shadow-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <QrCode className="h-5 w-5" />
+                QR Code
+                {userPlan === 'free' && <Crown className="h-4 w-4 text-orange-500" />}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6 text-center space-y-4">
+              <div className="w-40 h-40 bg-gradient-to-br from-gray-100 to-gray-200 mx-auto rounded-2xl flex items-center justify-center shadow-inner">
+                <QrCode className="h-20 w-20 text-gray-400" />
+              </div>
+              <p className="text-sm text-gray-600">
+                Generate QR code for easy offline sharing
               </p>
               <Button onClick={generateQR} variant="outline" className="w-full">
-                <QrCode className="h-4 w-4 mr-2" />
-                Generate QR Code
+                <Download className="h-4 w-4 mr-2" />
+                {userPlan === 'free' ? 'Upgrade for QR' : 'Download QR'}
               </Button>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+
+          {/* Share Statistics */}
+          <Card className="border-0 shadow-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Eye className="h-5 w-5 text-blue-600" />
+                Share Stats
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6 space-y-4">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600">0</div>
+                <div className="text-sm text-gray-600">Total Shares</div>
+              </div>
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div className="text-xl font-bold text-green-600">0</div>
+                  <div className="text-xs text-gray-600">This Week</div>
+                </div>
+                <div>
+                  <div className="text-xl font-bold text-purple-600">0</div>
+                  <div className="text-xs text-gray-600">Clicks</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Best Times */}
+          <Card className="border-0 shadow-xl">
+            <CardHeader>
+              <CardTitle className="text-lg">📅 Best Times to Share</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between">
+                  <span>📱 WhatsApp</span>
+                  <span className="text-gray-600">All day</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>📘 Facebook</span>
+                  <span className="text-gray-600">1-3 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>📸 Instagram</span>
+                  <span className="text-gray-600">11 AM-1 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>🐦 Twitter</span>
+                  <span className="text-gray-600">9-10 AM</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-
-      {/* Social Media Sharing */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Share on Social Media</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Button
-              onClick={() => shareOnPlatform('whatsapp')}
-              className="bg-[#25D366] hover:bg-[#128C7E] text-white"
-            >
-              <MessageCircle className="h-4 w-4 mr-2" />
-              WhatsApp
-            </Button>
-            
-            <Button
-              onClick={() => shareOnPlatform('facebook')}
-              className="bg-[#1877F2] hover:bg-[#166FE5] text-white"
-            >
-              <Facebook className="h-4 w-4 mr-2" />
-              Facebook
-            </Button>
-            
-            <Button
-              onClick={() => shareOnPlatform('instagram')}
-              className="bg-gradient-to-r from-[#833AB4] to-[#E1306C] hover:opacity-90 text-white"
-            >
-              <Instagram className="h-4 w-4 mr-2" />
-              Instagram
-            </Button>
-            
-            <Button
-              onClick={() => shareOnPlatform('twitter')}
-              className="bg-[#1DA1F2] hover:bg-[#0C90E1] text-white"
-            >
-              <Twitter className="h-4 w-4 mr-2" />
-              Twitter
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Sharing Tips */}
-      <Card>
-        <CardHeader>
-          <CardTitle>📈 Sharing Tips</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <h4 className="font-semibold mb-2">Best Times to Share</h4>
-              <ul className="text-sm text-gray-600 space-y-1">
-                <li>• Instagram: 11 AM - 1 PM, 7 PM - 9 PM</li>
-                <li>• Facebook: 1 PM - 3 PM, 7 PM - 9 PM</li>
-                <li>• WhatsApp: Throughout the day</li>
-                <li>• Twitter: 9 AM - 10 AM, 7 PM - 9 PM</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Engagement Tips</h4>
-              <ul className="text-sm text-gray-600 space-y-1">
-                <li>• Use relevant hashtags</li>
-                <li>• Include product photos</li>
-                <li>• Share customer testimonials</li>
-                <li>• Post regularly and consistently</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 };
