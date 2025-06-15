@@ -2,15 +2,10 @@
 import React from 'react';
 import PillCountdownTimer from './PillCountdownTimer';
 import AnimatedCounter from './AnimatedCounter';
+import RegistrationForm from './RegistrationForm';
+import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 
 export const EarlyAccessSection: React.FC = () => {
-  const scrollToPricing = () => {
-    const pricingSection = document.getElementById('pricing');
-    if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section id="early-access" className="section bg-gradient-to-b from-white to-gray-50 py-16">
       <div className="container-custom">
@@ -35,18 +30,28 @@ export const EarlyAccessSection: React.FC = () => {
             </div>
             
             <div className="animate-fade-in delay-400 flex flex-col items-center space-y-4">
-              <button 
-                className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-xl"
-                onClick={scrollToPricing}
-              >
-                Get Started for Free
-              </button>
-              <button 
-                className="bg-whatsapp hover:bg-whatsapp-dark text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg border-2 border-whatsapp"
-                onClick={scrollToPricing}
-              >
-                Unlock Full Store – ₹9/month
-              </button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-xl">
+                    Get Started for Free
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+                  <RegistrationForm planType="free" />
+                </DialogContent>
+              </Dialog>
+
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="bg-whatsapp hover:bg-whatsapp-dark text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg border-2 border-whatsapp">
+                    Unlock Full Store – ₹9/month
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+                  <RegistrationForm planType="pro" />
+                </DialogContent>
+              </Dialog>
+
               <p className="text-sm text-gray-600 text-center">
                 Compare plans and features above
               </p>
