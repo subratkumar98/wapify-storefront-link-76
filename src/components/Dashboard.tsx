@@ -110,7 +110,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userPlan, onAddProduct, onNavigat
             </div>
           </div>
         </CardContent>
-      </div>
+      </Card>
     </div>
   );
 };
