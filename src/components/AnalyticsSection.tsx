@@ -34,7 +34,7 @@ const AnalyticsSection: React.FC<AnalyticsSectionProps> = ({ userPlan }) => {
         totalViews: viewsOverTime.reduce((sum, day) => sum + day.views, 0),
         productViews: Math.floor(Math.random() * 200) + 50,
         uniqueVisitors: viewsOverTime.reduce((sum, day) => sum + day.visitors, 0),
-        conversionRate: (Math.random() * 5).toFixed(1),
+        conversionRate: parseFloat((Math.random() * 5).toFixed(1)),
         topProducts: [
           { name: 'Premium T-Shirt', views: 45, clicks: 12 },
           { name: 'Wireless Headphones', views: 38, clicks: 8 },
