@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import StoreSidebar from './StoreSidebar';
 import StoreDashboardHeader from './StoreDashboardHeader';
@@ -13,6 +12,7 @@ import WhatsAppSection from './WhatsAppSection';
 import ShareSection from './ShareSection';
 import AnalyticsSection from './AnalyticsSection';
 import SettingsSection from './SettingsSection';
+import FreePlanDashboard from './FreePlanDashboard';
 import { Card, CardContent } from './ui/card';
 import { useToast } from '@/hooks/use-toast';
 
@@ -22,13 +22,27 @@ const StorefrontBuilder: React.FC = () => {
   const [userData, setUserData] = useState<any>({});
   const [activeSection, setActiveSection] = useState('dashboard');
   const [showProductForm, setShowProductForm] = useState(false);
+  const [showFreeDashboard, setShowFreeDashboard] = useState(false);
 
   useEffect(() => {
     const plan = localStorage.getItem('userPlan') as 'free' | 'pro' || 'free';
     const user = JSON.parse(localStorage.getItem('userData') || '{}');
+    const isNewFreeUser = localStorage.getItem('isNewFreeUser') === 'true';
+    
     setUserPlan(plan);
     setUserData(user);
+    
+    // Show free dashboard for new free users
+    if (plan === 'free' && isNewFreeUser) {
+      setShowFreeDashboard(true);
+      localStorage.removeItem('isNewFreeUser'); // Remove flag after showing
+    }
   }, []);
+
+  // If we should show the free dashboard, render it instead
+  if (showFreeDashboard && userPlan === 'free') {
+    return <FreePlanDashboard />;
+  }
 
   const handleSaveCustomizer = (settings: any) => {
     console.log('Saving customizer settings:', settings);
