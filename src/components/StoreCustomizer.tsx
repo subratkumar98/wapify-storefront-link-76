@@ -1,20 +1,20 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Badge } from './ui/badge';
-import { Palette, Monitor, Crown, Sparkles, Eye } from 'lucide-react';
+import { Palette, Monitor, Crown, Sparkles, Eye, ArrowLeft, Save } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ImageUpload from './ImageUpload';
 
 interface StoreCustomizerProps {
   userPlan: 'free' | 'pro';
-  onSave: (settings: any) => void;
+  onSave: (settings?: any) => void;
+  onBack?: () => void;
 }
 
-const StoreCustomizer: React.FC<StoreCustomizerProps> = ({ userPlan, onSave }) => {
+const StoreCustomizer: React.FC<StoreCustomizerProps> = ({ userPlan, onSave, onBack }) => {
   const { toast } = useToast();
   const [settings, setSettings] = useState({
     logo: '',
@@ -58,15 +58,27 @@ const StoreCustomizer: React.FC<StoreCustomizerProps> = ({ userPlan, onSave }) =
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-8">
       <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-bold flex items-center gap-3">
-            <Sparkles className="h-8 w-8 text-purple-600" />
-            Store Customizer
-          </h2>
-          <p className="text-gray-600 mt-2">Make your store stand out with professional customization</p>
+        <div className="flex items-center gap-4">
+          {onBack && (
+            <Button 
+              variant="outline" 
+              onClick={onBack}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back
+            </Button>
+          )}
+          <div>
+            <h2 className="text-3xl font-bold flex items-center gap-3">
+              <Sparkles className="h-8 w-8 text-purple-600" />
+              Store Customizer
+            </h2>
+            <p className="text-gray-600 mt-2">Make your store stand out with professional customization</p>
+          </div>
         </div>
-        <Button onClick={handleSave} size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
-          <Sparkles className="h-4 w-4 mr-2" />
+        <Button onClick={handleSave} size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 flex items-center gap-2">
+          <Save className="h-4 w-4" />
           Save Changes
         </Button>
       </div>

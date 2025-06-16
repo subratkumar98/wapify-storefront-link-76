@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import StoreSidebar from './StoreSidebar';
 import StoreDashboardHeader from './StoreDashboardHeader';
 import Dashboard from './Dashboard';
+import StorefrontSetupFlow from './StorefrontSetupFlow';
 import StoreCustomizer from './StoreCustomizer';
 import ProductForm from './ProductForm';
 import ProductsSection from './ProductsSection';
@@ -63,6 +64,9 @@ const StorefrontBuilder: React.FC = () => {
             onNavigateToSection={setActiveSection}
           />
         );
+
+      case 'setup':
+        return <StorefrontSetupFlow userPlan={userPlan} />;
 
       case 'customizer':
         return <StoreCustomizer userPlan={userPlan} onSave={handleSaveCustomizer} />;
