@@ -4,7 +4,6 @@ import StoreSidebar from './StoreSidebar';
 import StoreDashboardHeader from './StoreDashboardHeader';
 import Dashboard from './Dashboard';
 import StorefrontSetupFlow from './StorefrontSetupFlow';
-import StorefrontSetup from './StorefrontSetup';
 import StoreCustomizer from './StoreCustomizer';
 import ProductForm from './ProductForm';
 import ProductsSection from './ProductsSection';
@@ -15,16 +14,28 @@ import ShareSection from './ShareSection';
 import AnalyticsSection from './AnalyticsSection';
 import SettingsSection from './SettingsSection';
 import FreePlanDashboard from './FreePlanDashboard';
+import CustomizeStorefrontSection from './StorefrontSetup/CustomizeStorefrontSection';
+import ProductsSetupSection from './StorefrontSetup/ProductsSetupSection';
+import PaymentMethodsSection from './StorefrontSetup/PaymentMethodsSection';
+import DeliverySetupSection from './StorefrontSetup/DeliverySetupSection';
+import ShareStoreSection from './StorefrontSetup/ShareStoreSection';
 import { Card, CardContent } from './ui/card';
 import { useToast } from '@/hooks/use-toast';
 
 const StorefrontBuilder: React.FC = () => {
   const { toast } = useToast();
-  const [userPlan, setUserPlan] = useState<'free' | 'pro'>('pro'); // Set to pro for paid plan users
+  const [userPlan, setUserPlan] = useState<'free' | 'pro'>('pro');
   const [userData, setUserData] = useState<any>({});
-  const [activeSection, setActiveSection] = useState('storefront-setup');
+  const [activeSection, setActiveSection] = useState('dashboard');
   const [showProductForm, setShowProductForm] = useState(false);
   const [showFreeDashboard, setShowFreeDashboard] = useState(false);
+  const [setupProgress, setSetupProgress] = useState({
+    customize: false,
+    products: false,
+    payments: false,
+    delivery: false,
+    share: false
+  });
 
   useEffect(() => {
     const plan = localStorage.getItem('userPlan') as 'free' | 'pro' || 'pro';
@@ -37,7 +48,7 @@ const StorefrontBuilder: React.FC = () => {
     // Show free dashboard for new free users
     if (plan === 'free' && isNewFreeUser) {
       setShowFreeDashboard(true);
-      localStorage.removeItem('isNewFreeUser'); // Remove flag after showing
+      localStorage.removeItem('isNewFreeUser');
     }
   }, []);
 
@@ -48,7 +59,6 @@ const StorefrontBuilder: React.FC = () => {
 
   const handleSaveCustomizer = (settings: any) => {
     console.log('Saving customizer settings:', settings);
-    // Here you would save to database/localStorage
   };
 
   const handleSaveProduct = (product: any) => {
@@ -57,6 +67,15 @@ const StorefrontBuilder: React.FC = () => {
     toast({
       title: "Product Added!",
       description: "Your product has been added to the store",
+    });
+  };
+
+  const handleSetupSectionSave = (sectionId: string) => {
+    const section = sectionId.replace('setup-', '');
+    setSetupProgress(prev => ({ ...prev, [section]: true }));
+    toast({
+      title: "✅ Section Completed!",
+      description: `${section} setup has been saved successfully`,
     });
   };
 
@@ -81,8 +100,50 @@ const StorefrontBuilder: React.FC = () => {
           />
         );
 
-      case 'storefront-setup':
-        return <StorefrontSetup userPlan={userPlan} />;
+      case 'setup-customize':
+        return (
+          <CustomizeStorefrontSection
+            onSave={() => handleSetupSectionSave('setup-customize')}
+            onBack={() => setActiveSection('dashboard')}
+            userPlan={userPlan}
+          />
+        );
+
+      case 'setup-products':
+        return (
+          <ProductsSetupSection
+            onSave={() => handleSetupSectionSave('setup-products')}
+            onBack={() => setActiveSection('dashboard')}
+            userPlan={userPlan}
+          />
+        );
+
+      case 'setup-payments':
+        return (
+          <PaymentMethodsSection
+            onSave={() => handleSetupSectionSave('setup-payments')}
+            onBack={() => setActiveSection('dashboard')}
+            userPlan={userPlan}
+          />
+        );
+
+      case 'setup-delivery':
+        return (
+          <DeliverySetupSection
+            onSave={() => handleSetupSectionSave('setup-delivery')}
+            onBack={() => setActiveSection('dashboard')}
+            userPlan={userPlan}
+          />
+        );
+
+      case 'setup-share':
+        return (
+          <ShareStoreSection
+            onSave={() => handleSetupSectionSave('setup-share')}
+            onBack={() => setActiveSection('dashboard')}
+            userPlan={userPlan}
+          />
+        );
 
       case 'setup':
         return <StorefrontSetupFlow userPlan={userPlan} />;

@@ -9,9 +9,12 @@ import {
   MessageCircle, 
   Share2, 
   BarChart, 
-  Settings 
+  Settings,
+  Sparkles,
+  Truck
 } from 'lucide-react';
 import { Button } from './ui/button';
+import { Badge } from './ui/badge';
 
 interface StoreSidebarProps {
   activeSection: string;
@@ -20,14 +23,56 @@ interface StoreSidebarProps {
 }
 
 const StoreSidebar: React.FC<StoreSidebarProps> = ({ activeSection, onSectionChange, userPlan }) => {
+  const setupProgress = {
+    customize: false,
+    products: false,
+    payments: false,
+    delivery: false,
+    share: false
+  };
+
   const sidebarItems = [
     { id: 'dashboard', label: 'Home / Dashboard', icon: Home },
-    { id: 'customizer', label: 'Store Customizer', icon: Palette },
-    { id: 'products', label: 'Products', icon: Package },
-    { id: 'payments', label: 'Payments & Delivery', icon: CreditCard },
+    { 
+      id: 'setup-customize', 
+      label: 'Customize Storefront', 
+      icon: Sparkles,
+      isSetup: true,
+      completed: setupProgress.customize
+    },
+    { 
+      id: 'setup-products', 
+      label: 'Add Products', 
+      icon: Package,
+      isSetup: true,
+      completed: setupProgress.products
+    },
+    { 
+      id: 'setup-payments', 
+      label: 'Payment Setup', 
+      icon: CreditCard,
+      isSetup: true,
+      completed: setupProgress.payments
+    },
+    { 
+      id: 'setup-delivery', 
+      label: 'Delivery Options', 
+      icon: Truck,
+      isSetup: true,
+      completed: setupProgress.delivery
+    },
+    { 
+      id: 'setup-share', 
+      label: 'Share Store', 
+      icon: Share2,
+      isSetup: true,
+      completed: setupProgress.share
+    },
+    { id: 'customizer', label: 'Advanced Customizer', icon: Palette },
+    { id: 'products', label: 'Manage Products', icon: Package },
+    { id: 'payments', label: 'Payment Settings', icon: CreditCard },
     { id: 'promotions', label: 'Offers & Promotions', icon: Megaphone },
     { id: 'whatsapp', label: 'WhatsApp Integration', icon: MessageCircle },
-    { id: 'share', label: 'Share Store', icon: Share2 },
     { id: 'analytics', label: 'Analytics', icon: BarChart },
     { id: 'settings', label: 'Settings', icon: Settings },
   ];
@@ -45,21 +90,53 @@ const StoreSidebar: React.FC<StoreSidebarProps> = ({ activeSection, onSectionCha
         </div>
       </div>
       
-      <nav className="p-4 space-y-2">
-        {sidebarItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <Button
-              key={item.id}
-              variant={activeSection === item.id ? 'default' : 'ghost'}
-              className="w-full justify-start text-left"
-              onClick={() => onSectionChange(item.id)}
-            >
-              <Icon className="h-4 w-4 mr-3" />
-              <span className="text-sm">{item.label}</span>
-            </Button>
-          );
-        })}
+      <nav className="p-4 space-y-1">
+        {/* Setup Section */}
+        <div className="mb-4">
+          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+            Store Setup
+          </h3>
+          {sidebarItems.filter(item => item.isSetup).map((item) => {
+            const Icon = item.icon;
+            return (
+              <Button
+                key={item.id}
+                variant={activeSection === item.id ? 'default' : 'ghost'}
+                className="w-full justify-start text-left mb-1"
+                onClick={() => onSectionChange(item.id)}
+              >
+                <Icon className="h-4 w-4 mr-3" />
+                <span className="text-sm flex-1">{item.label}</span>
+                {item.completed && (
+                  <Badge variant="default" className="ml-2 bg-green-100 text-green-800 text-xs">
+                    ✓
+                  </Badge>
+                )}
+              </Button>
+            );
+          })}
+        </div>
+
+        {/* Management Section */}
+        <div>
+          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+            Store Management
+          </h3>
+          {sidebarItems.filter(item => !item.isSetup).map((item) => {
+            const Icon = item.icon;
+            return (
+              <Button
+                key={item.id}
+                variant={activeSection === item.id ? 'default' : 'ghost'}
+                className="w-full justify-start text-left mb-1"
+                onClick={() => onSectionChange(item.id)}
+              >
+                <Icon className="h-4 w-4 mr-3" />
+                <span className="text-sm">{item.label}</span>
+              </Button>
+            );
+          })}
+        </div>
       </nav>
     </div>
   );
