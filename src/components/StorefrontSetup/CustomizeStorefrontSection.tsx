@@ -7,6 +7,7 @@ import { Label } from '../ui/label';
 import { ArrowLeft, Save, Palette, Upload, Eye } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ImageUpload from '../ImageUpload';
+import ImageGalleryUpload from '../ImageGalleryUpload';
 
 interface CustomizeStorefrontSectionProps {
   onSave: () => void;
@@ -18,15 +19,15 @@ const CustomizeStorefrontSection: React.FC<CustomizeStorefrontSectionProps> = ({
   const { toast } = useToast();
   const [settings, setSettings] = useState({
     storeLogo: '',
-    coverImage: '',
-    promoBanner: '',
+    coverImages: [] as string[],
+    promoBanners: [] as string[],
     colorTheme: '#25D366',
     fontFamily: 'Inter',
     layoutView: 'grid',
     cardDesign: 'rounded',
     showTestimonials: true,
     showRatings: true,
-    animatedDiscountGraphic: ''
+    products: [] as any[]
   });
 
   const colorPresets = [
@@ -43,12 +44,86 @@ const CustomizeStorefrontSection: React.FC<CustomizeStorefrontSectionProps> = ({
   ];
 
   const handleSave = () => {
+    // Save settings to localStorage for preview
+    localStorage.setItem('storeCustomization', JSON.stringify(settings));
     toast({
       title: "🎨 Storefront Customized!",
       description: "Your store branding has been saved successfully",
     });
     onSave();
   };
+
+  // Live Preview Component
+  const LivePreview = () => (
+    <div className="bg-gray-100 p-4">
+      <div 
+        className="bg-white rounded-lg shadow-sm overflow-hidden"
+        style={{ fontFamily: settings.fontFamily }}
+      >
+        {/* Header */}
+        <div className="p-4 text-center" style={{ borderBottom: `2px solid ${settings.colorTheme}20` }}>
+          {settings.storeLogo ? (
+            <img src={settings.storeLogo} alt="Logo" className="w-16 h-16 mx-auto rounded-full mb-2 object-cover" />
+          ) : (
+            <div className="w-16 h-16 bg-gray-300 rounded-full mx-auto mb-2 flex items-center justify-center">
+              🏪
+            </div>
+          )}
+          <h3 className="font-bold text-lg">Your Store</h3>
+          
+          {/* Promo Banners */}
+          {settings.promoBanners.length > 0 && (
+            <div className="mt-2 space-y-1">
+              {settings.promoBanners.slice(0, 2).map((banner, index) => (
+                <img key={index} src={banner} alt="Promo" className="w-full h-6 object-cover rounded" />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Cover Images Carousel */}
+        {settings.coverImages.length > 0 && (
+          <div className="h-20 relative overflow-hidden">
+            <img 
+              src={settings.coverImages[0]} 
+              alt="Cover" 
+              className="w-full h-full object-cover" 
+            />
+            {settings.coverImages.length > 1 && (
+              <div className="absolute top-1 right-1 bg-black bg-opacity-50 text-white text-xs px-1 rounded">
+                +{settings.coverImages.length - 1}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Products Preview */}
+        <div className="p-4">
+          <div className={`grid ${settings.layoutView === 'grid' ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+            {[1,2].map((i) => (
+              <div 
+                key={i} 
+                className={`bg-white border p-3 ${
+                  settings.cardDesign === 'rounded' ? 'rounded-lg' : 
+                  settings.cardDesign === 'square' ? 'rounded-none' : 'rounded-sm'
+                } shadow-sm`}
+              >
+                <div className="aspect-square bg-gray-200 rounded mb-2"></div>
+                <p className="text-xs font-medium">Sample Product {i}</p>
+                <p className="text-xs text-green-600">₹999</p>
+                <button 
+                  className="w-full text-xs text-white py-1 px-2 rounded mt-1 transition-colors"
+                  style={{ backgroundColor: settings.colorTheme }}
+                >
+                  Buy Now
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -90,37 +165,31 @@ const CustomizeStorefrontSection: React.FC<CustomizeStorefrontSectionProps> = ({
                 <CardTitle>📷 Store Images</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <ImageUpload
-                    label="Store Logo"
-                    onImageUpload={(url) => setSettings(prev => ({ ...prev, storeLogo: url }))}
-                    currentImage={settings.storeLogo}
-                    aspectRatio="aspect-square"
-                  />
-                  
-                  <ImageUpload
-                    label="Store Cover Image"
-                    onImageUpload={(url) => setSettings(prev => ({ ...prev, coverImage: url }))}
-                    currentImage={settings.coverImage}
-                    aspectRatio="aspect-[3/1]"
-                  />
-                </div>
+                {/* Store Logo */}
+                <ImageUpload
+                  label="Store Logo"
+                  onImageUpload={(url) => setSettings(prev => ({ ...prev, storeLogo: url }))}
+                  currentImage={settings.storeLogo}
+                  aspectRatio="aspect-square"
+                />
+                
+                {/* Multiple Cover Images */}
+                <ImageGalleryUpload
+                  label="Store Cover Images (Multiple)"
+                  images={settings.coverImages}
+                  onImagesChange={(images) => setSettings(prev => ({ ...prev, coverImages: images }))}
+                  maxImages={5}
+                  aspectRatio="aspect-[3/1]"
+                />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <ImageUpload
-                    label="Promotional Banner (e.g., Flat ₹999 OFF)"
-                    onImageUpload={(url) => setSettings(prev => ({ ...prev, promoBanner: url }))}
-                    currentImage={settings.promoBanner}
-                    aspectRatio="aspect-[4/1]"
-                  />
-                  
-                  <ImageUpload
-                    label="🔥 Animated Discount Graphic"
-                    onImageUpload={(url) => setSettings(prev => ({ ...prev, animatedDiscountGraphic: url }))}
-                    currentImage={settings.animatedDiscountGraphic}
-                    aspectRatio="aspect-square"
-                  />
-                </div>
+                {/* Multiple Promotional Banners */}
+                <ImageGalleryUpload
+                  label="🔥 Promotional Banners (Multiple)"
+                  images={settings.promoBanners}
+                  onImagesChange={(images) => setSettings(prev => ({ ...prev, promoBanners: images }))}
+                  maxImages={3}
+                  aspectRatio="aspect-[4/1]"
+                />
               </CardContent>
             </Card>
 
@@ -267,59 +336,7 @@ const CustomizeStorefrontSection: React.FC<CustomizeStorefrontSectionProps> = ({
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="bg-gray-100 p-4">
-                <div 
-                  className="bg-white rounded-lg shadow-sm overflow-hidden"
-                  style={{ fontFamily: settings.fontFamily }}
-                >
-                  {/* Header */}
-                  <div className="p-4 text-center" style={{ borderBottom: `2px solid ${settings.colorTheme}20` }}>
-                    {settings.storeLogo ? (
-                      <img src={settings.storeLogo} alt="Logo" className="w-16 h-16 mx-auto rounded-full mb-2 object-cover" />
-                    ) : (
-                      <div className="w-16 h-16 bg-gray-300 rounded-full mx-auto mb-2 flex items-center justify-center">
-                        🏪
-                      </div>
-                    )}
-                    <h3 className="font-bold text-lg">Your Store</h3>
-                    {settings.promoBanner && (
-                      <div className="mt-2">
-                        <img src={settings.promoBanner} alt="Promo" className="w-full h-8 object-cover rounded" />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Cover Image */}
-                  {settings.coverImage && (
-                    <div className="h-20 bg-cover bg-center" style={{ backgroundImage: `url(${settings.coverImage})` }}></div>
-                  )}
-
-                  {/* Products Preview */}
-                  <div className="p-4">
-                    <div className={`grid ${settings.layoutView === 'grid' ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
-                      {[1,2].map((i) => (
-                        <div 
-                          key={i} 
-                          className={`bg-white border p-3 ${
-                            settings.cardDesign === 'rounded' ? 'rounded-lg' : 
-                            settings.cardDesign === 'square' ? 'rounded-none' : 'rounded-sm'
-                          } shadow-sm`}
-                        >
-                          <div className="aspect-square bg-gray-200 rounded mb-2"></div>
-                          <p className="text-xs font-medium">Sample Product {i}</p>
-                          <p className="text-xs text-green-600">₹999</p>
-                          <button 
-                            className="w-full text-xs text-white py-1 px-2 rounded mt-1 transition-colors"
-                            style={{ backgroundColor: settings.colorTheme }}
-                          >
-                            Buy Now
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <LivePreview />
             </CardContent>
           </Card>
         </div>

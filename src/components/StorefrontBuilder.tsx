@@ -7,7 +7,6 @@ import StorefrontSetupFlow from './StorefrontSetupFlow';
 import StoreCustomizer from './StoreCustomizer';
 import ProductForm from './ProductForm';
 import ProductsSection from './ProductsSection';
-import PaymentsSection from './PaymentsSection';
 import PromotionsSection from './PromotionsSection';
 import WhatsAppSection from './WhatsAppSection';
 import ShareSection from './ShareSection';
@@ -20,15 +19,18 @@ import PaymentMethodsSection from './StorefrontSetup/PaymentMethodsSection';
 import DeliverySetupSection from './StorefrontSetup/DeliverySetupSection';
 import ShareStoreSection from './StorefrontSetup/ShareStoreSection';
 import { Card, CardContent } from './ui/card';
+import { Button } from './ui/button';
+import { Menu, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const StorefrontBuilder: React.FC = () => {
   const { toast } = useToast();
   const [userPlan, setUserPlan] = useState<'free' | 'pro'>('pro');
   const [userData, setUserData] = useState<any>({});
-  const [activeSection, setActiveSection] = useState('dashboard');
+  const [activeSection, setActiveSection] = useState('setup-customize');
   const [showProductForm, setShowProductForm] = useState(false);
   const [showFreeDashboard, setShowFreeDashboard] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [setupProgress, setSetupProgress] = useState({
     customize: false,
     products: false,
@@ -91,20 +93,11 @@ const StorefrontBuilder: React.FC = () => {
     }
 
     switch (activeSection) {
-      case 'dashboard':
-        return (
-          <Dashboard
-            userPlan={userPlan}
-            onAddProduct={() => setShowProductForm(true)}
-            onNavigateToSection={setActiveSection}
-          />
-        );
-
       case 'setup-customize':
         return (
           <CustomizeStorefrontSection
             onSave={() => handleSetupSectionSave('setup-customize')}
-            onBack={() => setActiveSection('dashboard')}
+            onBack={() => setActiveSection('setup-customize')}
             userPlan={userPlan}
           />
         );
@@ -113,7 +106,7 @@ const StorefrontBuilder: React.FC = () => {
         return (
           <ProductsSetupSection
             onSave={() => handleSetupSectionSave('setup-products')}
-            onBack={() => setActiveSection('dashboard')}
+            onBack={() => setActiveSection('setup-customize')}
             userPlan={userPlan}
           />
         );
@@ -122,7 +115,7 @@ const StorefrontBuilder: React.FC = () => {
         return (
           <PaymentMethodsSection
             onSave={() => handleSetupSectionSave('setup-payments')}
-            onBack={() => setActiveSection('dashboard')}
+            onBack={() => setActiveSection('setup-customize')}
             userPlan={userPlan}
           />
         );
@@ -131,7 +124,7 @@ const StorefrontBuilder: React.FC = () => {
         return (
           <DeliverySetupSection
             onSave={() => handleSetupSectionSave('setup-delivery')}
-            onBack={() => setActiveSection('dashboard')}
+            onBack={() => setActiveSection('setup-customize')}
             userPlan={userPlan}
           />
         );
@@ -140,7 +133,7 @@ const StorefrontBuilder: React.FC = () => {
         return (
           <ShareStoreSection
             onSave={() => handleSetupSectionSave('setup-share')}
-            onBack={() => setActiveSection('dashboard')}
+            onBack={() => setActiveSection('setup-customize')}
             userPlan={userPlan}
           />
         );
@@ -153,9 +146,6 @@ const StorefrontBuilder: React.FC = () => {
 
       case 'products':
         return <ProductsSection onAddProduct={() => setShowProductForm(true)} />;
-
-      case 'payments':
-        return <PaymentsSection userPlan={userPlan} />;
 
       case 'promotions':
         return <PromotionsSection userPlan={userPlan} />;
@@ -192,19 +182,54 @@ const StorefrontBuilder: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <StoreSidebar 
-        activeSection={activeSection}
-        onSectionChange={setActiveSection}
-        userPlan={userPlan}
-      />
-      
-      <div className="flex-1 flex flex-col">
-        <StoreDashboardHeader
-          storeName={userData.businessName || 'Your Store'}
-          storeHandle={userData.storeName || 'yourstore'}
+    <div className="min-h-screen bg-gray-50 flex w-full">
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && userPlan === 'pro' && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div className={`${
+        userPlan === 'pro' 
+          ? `fixed md:relative z-50 md:z-auto transition-transform duration-300 ${
+              sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+            }`
+          : 'hidden md:block'
+      }`}>
+        <StoreSidebar 
+          activeSection={activeSection}
+          onSectionChange={(section) => {
+            setActiveSection(section);
+            setSidebarOpen(false); // Close mobile sidebar when selecting
+          }}
           userPlan={userPlan}
         />
+      </div>
+      
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Header with Mobile Menu Button */}
+        <div className="flex items-center">
+          {userPlan === 'pro' && (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden m-2 p-2"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          )}
+          <div className="flex-1">
+            <StoreDashboardHeader
+              storeName={userData.businessName || 'Your Store'}
+              storeHandle={userData.storeName || 'yourstore'}
+              userPlan={userPlan}
+            />
+          </div>
+        </div>
         
         <main className="flex-1 overflow-y-auto">
           {renderMainContent()}

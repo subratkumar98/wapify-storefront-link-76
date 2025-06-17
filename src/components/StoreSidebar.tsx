@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { 
-  Home, 
   Palette, 
   Package, 
   CreditCard, 
@@ -32,7 +31,6 @@ const StoreSidebar: React.FC<StoreSidebarProps> = ({ activeSection, onSectionCha
   };
 
   const sidebarItems = [
-    { id: 'dashboard', label: 'Home / Dashboard', icon: Home },
     { 
       id: 'setup-customize', 
       label: 'Customize Storefront', 
@@ -70,7 +68,6 @@ const StoreSidebar: React.FC<StoreSidebarProps> = ({ activeSection, onSectionCha
     },
     { id: 'customizer', label: 'Advanced Customizer', icon: Palette },
     { id: 'products', label: 'Manage Products', icon: Package },
-    { id: 'payments', label: 'Payment Settings', icon: CreditCard },
     { id: 'promotions', label: 'Offers & Promotions', icon: Megaphone },
     { id: 'whatsapp', label: 'WhatsApp Integration', icon: MessageCircle },
     { id: 'analytics', label: 'Analytics', icon: BarChart },
@@ -78,7 +75,9 @@ const StoreSidebar: React.FC<StoreSidebarProps> = ({ activeSection, onSectionCha
   ];
 
   return (
-    <div className="w-64 bg-white h-full border-r border-gray-200 sticky top-0 overflow-y-auto">
+    <div className={`w-64 bg-white h-full border-r border-gray-200 sticky top-0 overflow-y-auto ${
+      userPlan === 'pro' ? 'block' : 'hidden md:block'
+    }`}>
       <div className="p-4 border-b border-gray-200">
         <h2 className="text-lg font-semibold text-gray-800">Store Builder</h2>
         <div className="mt-2">
