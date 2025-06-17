@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import StoreSidebar from './StoreSidebar';
 import StoreDashboardHeader from './StoreDashboardHeader';
 import Dashboard from './Dashboard';
 import StorefrontSetupFlow from './StorefrontSetupFlow';
+import StorefrontSetup from './StorefrontSetup';
 import StoreCustomizer from './StoreCustomizer';
 import ProductForm from './ProductForm';
 import ProductsSection from './ProductsSection';
@@ -18,14 +20,14 @@ import { useToast } from '@/hooks/use-toast';
 
 const StorefrontBuilder: React.FC = () => {
   const { toast } = useToast();
-  const [userPlan, setUserPlan] = useState<'free' | 'pro'>('free');
+  const [userPlan, setUserPlan] = useState<'free' | 'pro'>('pro'); // Set to pro for paid plan users
   const [userData, setUserData] = useState<any>({});
-  const [activeSection, setActiveSection] = useState('dashboard');
+  const [activeSection, setActiveSection] = useState('storefront-setup');
   const [showProductForm, setShowProductForm] = useState(false);
   const [showFreeDashboard, setShowFreeDashboard] = useState(false);
 
   useEffect(() => {
-    const plan = localStorage.getItem('userPlan') as 'free' | 'pro' || 'free';
+    const plan = localStorage.getItem('userPlan') as 'free' | 'pro' || 'pro';
     const user = JSON.parse(localStorage.getItem('userData') || '{}');
     const isNewFreeUser = localStorage.getItem('isNewFreeUser') === 'true';
     
@@ -78,6 +80,9 @@ const StorefrontBuilder: React.FC = () => {
             onNavigateToSection={setActiveSection}
           />
         );
+
+      case 'storefront-setup':
+        return <StorefrontSetup userPlan={userPlan} />;
 
       case 'setup':
         return <StorefrontSetupFlow userPlan={userPlan} />;
